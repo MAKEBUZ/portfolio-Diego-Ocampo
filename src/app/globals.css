@@ -1,1 +1,17 @@
 @import "tailwindcss";
+
+
+:root {
+    --primary: 289 58% 59%;   
+    --secondary: 289 49% 46%;  
+    --tertiary: 293 49% 41%;   
+    --quaternary: 311 49% 31%; 
+    --light: 300 94% 98%;      
+    --lighter: 300 91% 96%;    
+    --muted: 297 83% 92%;      
+    --soft: 295 73% 84%;       
+    --accent: 293 71% 72%;     
+    --dark: 311 46% 27%;       
+    --darker: 311 61% 14%;     
+}
+  
