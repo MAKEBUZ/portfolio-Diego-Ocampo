@@ -9,10 +9,11 @@ export default function Home() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [isDarkMode, setIsDarkMode] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
+  const [isClient, setIsClient] = useState(false)
 
-  // Dark mode handling
+  // Solo ejecutar en el cliente
   useEffect(() => {
+    setIsClient(true)
     setIsMounted(true)
     const savedTheme = localStorage.getItem('theme')
     if (savedTheme) {
@@ -27,20 +28,31 @@ export default function Home() {
     }
   }, [isDarkMode, isMounted])
 
-  // Particle effect
+  // Particle effect - solo en cliente
   useEffect(() => {
+    if (!isClient) return
+
     const canvas = canvasRef.current
     if (!canvas) return
 
     const ctx = canvas.getContext("2d")
     if (!ctx) return
 
-    canvas.width = window.innerWidth
-    canvas.height = window.innerHeight
+    // Configuración adaptativa
+    const getSettings = () => {
+      const isMobile = window.innerWidth < 768
+      return {
+        particleCount: isMobile ? 60 : 120,
+        maxDistance: isMobile ? 150 : 250,
+        particleSize: isMobile ? 1.5 : 2.5,
+        lineWidth: isMobile ? 0.8 : 1.5,
+        speed: isMobile ? 0.4 : 0.7
+      }
+    }
 
-    const particles: Particle[] = []
-    const particleCount = 150
-    const maxDistance = 300
+    let settings = getSettings()
+    let particles: Particle[] = []
+    let animationFrameId: number
 
     class Particle {
       x!: number
@@ -55,32 +67,23 @@ export default function Home() {
           this.x = Math.random() * canvas.width
           this.y = Math.random() * canvas.height
         }
-        this.directionX = (Math.random() - 0.5) * 0.8
-        this.directionY = (Math.random() - 0.5) * 0.8
-        this.size = Math.random() * 3 + 1.5
+        this.directionX = (Math.random() - 0.5) * settings.speed
+        this.directionY = (Math.random() - 0.5) * settings.speed
+        this.size = Math.random() * settings.particleSize + 1
 
         const isDark = document.documentElement.classList.contains('dark')
-        const colors = [
-          isDark 
-            ? `rgba(100, 200, 255, ${Math.random() * 0.7 + 0.3})` 
-            : `rgba(30, 100, 200, ${Math.random() * 0.7 + 0.3})`,
-          isDark 
-            ? `rgba(100, 255, 200, ${Math.random() * 0.7 + 0.3})` 
-            : `rgba(30, 200, 100, ${Math.random() * 0.7 + 0.3})`,
-          isDark 
-            ? `rgba(255, 255, 255, ${Math.random() * 0.5 + 0.2})` 
-            : `rgba(0, 0, 0, ${Math.random() * 0.3 + 0.1})`
-        ]
-        this.color = colors[Math.floor(Math.random() * colors.length)]
+        this.color = isDark 
+          ? `rgba(150, 200, 255, ${Math.random() * 0.5 + 0.3})`
+          : `rgba(50, 120, 220, ${Math.random() * 0.5 + 0.3})`
       }
 
       update() {
-        if (!canvas) return;
+        if (!canvas) return
         if (this.x > canvas.width || this.x < 0) {
-          this.directionX = -this.directionX * (0.9 + Math.random() * 0.2)
+          this.directionX = -this.directionX * 0.9
         }
         if (this.y > canvas.height || this.y < 0) {
-          this.directionY = -this.directionY * (0.9 + Math.random() * 0.2)
+          this.directionY = -this.directionY * 0.9
         }
 
         this.x += this.directionX
@@ -97,70 +100,63 @@ export default function Home() {
     }
 
     const init = () => {
-      for (let i = 0; i < particleCount; i++) {
+      particles = []
+      for (let i = 0; i < settings.particleCount; i++) {
         particles.push(new Particle())
       }
     }
 
     const animate = () => {
-      requestAnimationFrame(animate)
       ctx.clearRect(0, 0, canvas.width, canvas.height)
 
       const isDark = document.documentElement.classList.contains('dark')
-      const connectionColor = isDark ? 'rgba(150, 220, 255, 0.8)' : 'rgba(30, 120, 220, 0.8)'
+      const connectionColor = isDark ? 'rgba(150, 220, 255, 0.5)' : 'rgba(50, 140, 230, 0.5)'
 
       for (let i = 0; i < particles.length; i++) {
-        for (let j = i; j < particles.length; j++) {
+        for (let j = i + 1; j < Math.min(particles.length, i + 15); j++) {
           const dx = particles[i].x - particles[j].x
           const dy = particles[i].y - particles[j].y
           const distance = Math.sqrt(dx * dx + dy * dy)
 
-          if (distance < maxDistance) {
+          if (distance < settings.maxDistance) {
             ctx.beginPath()
-            const opacity = 1 - distance / maxDistance
-            ctx.strokeStyle = connectionColor.replace('0.8', `${opacity * 0.8}`)
-            ctx.lineWidth = opacity * 1.8
+            const opacity = 1 - distance / settings.maxDistance
+            ctx.strokeStyle = connectionColor.replace('0.5', `${opacity * 0.5}`)
+            ctx.lineWidth = opacity * settings.lineWidth
             ctx.moveTo(particles[i].x, particles[i].y)
             ctx.lineTo(particles[j].x, particles[j].y)
             ctx.stroke()
           }
         }
-      }
-
-      for (let i = 0; i < particles.length; i++) {
         particles[i].update()
         particles[i].draw()
       }
+
+      animationFrameId = requestAnimationFrame(animate)
     }
 
     const handleResize = () => {
       canvas.width = window.innerWidth
       canvas.height = window.innerHeight
+      settings = getSettings()
+      init()
     }
 
-    const observer = new MutationObserver(() => {
-      particles.length = 0
-      init()
-    })
-
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['class']
-    })
-
-    window.addEventListener("resize", handleResize)
-
+    // Configuración inicial
+    canvas.width = window.innerWidth
+    canvas.height = window.innerHeight
     init()
     animate()
 
+    window.addEventListener("resize", handleResize)
+
     return () => {
       window.removeEventListener("resize", handleResize)
-      observer.disconnect()
+      cancelAnimationFrame(animationFrameId)
     }
-  }, [])
+  }, [isClient]) // Solo se ejecuta cuando isClient cambia
 
   const handleStartClick = () => {
-    setIsLoading(true)
     setTimeout(() => {
       router.push('/loading')
     }, 300)
@@ -168,10 +164,13 @@ export default function Home() {
 
   return (
     <main className="relative h-screen w-full overflow-hidden bg-primary">
-      <canvas 
-        ref={canvasRef} 
-        className="absolute inset-0 z-0 opacity-90 dark:opacity-80"
-      />
+      {/* Canvas solo se muestra en cliente */}
+      {isClient && (
+        <canvas 
+          ref={canvasRef} 
+          className="absolute inset-0 z-0 opacity-80 dark:opacity-70 md:opacity-90 md:dark:opacity-80"
+        />
+      )}
 
       <div className="relative z-10 flex h-full flex-col items-center justify-center px-4 text-center">
         <motion.h1
@@ -216,9 +215,9 @@ export default function Home() {
         >
           <button
             onClick={handleStartClick}
-            className={`rounded-md px-8 py-3 text-lg font-medium shadow-lg transition-smooth hover:shadow-xl ${
-              isDarkMode ? 'bg-white text-gray-800' : 'bg-gray-800 text-white'
-            } hover:bg-opacity-90`}
+            className={`rounded-md px-8 py-3 text-lg font-medium shadow-lg transition-all hover:shadow-xl ${
+              isDarkMode ? 'bg-white text-gray-800 hover:bg-gray-100' : 'bg-gray-800 text-white hover:bg-gray-700'
+            }`}
           >
             Click To Start
           </button>
