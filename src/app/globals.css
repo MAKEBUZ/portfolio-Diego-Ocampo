@@ -1,17 +1,79 @@
 @import "tailwindcss";
 
-
 :root {
-    --primary: 289 58% 59%;   
-    --secondary: 289 49% 46%;  
-    --tertiary: 293 49% 41%;   
-    --quaternary: 311 49% 31%; 
-    --light: 300 94% 98%;      
-    --lighter: 300 91% 96%;    
-    --muted: 297 83% 92%;      
-    --soft: 295 73% 84%;       
-    --accent: 293 71% 72%;     
-    --dark: 311 46% 27%;       
-    --darker: 311 61% 14%;     
+  /* Color scheme in HSL */
+  --sidebar-color: 268, 15%, 28%;        /* #463C51 - Barra lateral */
+  --sidebar-hover: 263, 15%, 35%;        /* Hover barra lateral */
+  --profile-banner: 10, 20%, 50%;        /* #9F8380 - Banner de perfil (versión más oscura) */
+  --menu-gradient-start: 33, 41%, 89%;   /* #EDE4D8 - Inicio gradiente */
+  --menu-gradient-end: 10, 20%, 60%;     /* #9F8380 - Fin gradiente */
+  --menu-item: 220, 15%, 40%;           /* #50596B - Elementos grilla */
+  --menu-item-hover: 220, 15%, 35%;     /* Hover elementos */
+  --border-profile: 33, 41%, 89%;       /* #EDE4D8 - Borde imagen */
 }
+
+@layer utilities {
+
+    .bg-lighter {
+    background-color: hsl(40, 38%, 95%);
+  }
   
+  /* Fondo para dark mode */
+  .bg-darker {
+    background-color: hsl(220, 41%, 10%);
+  }
+  
+  /* Cuadrado indicador */
+  .theme-indicator {
+    width: 200px;
+    height: 200px;
+    border: 4px solid hsl(220, 41%, 32%);
+    background-color: hsl(33, 41%, 89%);
+  }
+  
+  .dark .theme-indicator {
+    border-color: hsl(220, 15%, 60%);
+    background-color: hsl(220, 41%, 20%);
+  }
+  
+  /* Barra lateral */
+  .bg-sidebar {
+    background-color: hsl(var(--sidebar-color));
+  }
+  .bg-sidebar-hover {
+    background-color: hsl(var(--sidebar-hover));
+  }
+
+  /* Banner de perfil */
+  .bg-profile-banner {
+    background-color: hsl(var(--profile-banner));
+  }
+
+  /* Gradiente del menú */
+  .bg-menu-gradient {
+    background: linear-gradient(
+      to bottom,
+      hsl(var(--menu-gradient-start)),
+      hsl(var(--menu-gradient-end))
+    );
+  }
+
+  /* Elementos de la grilla */
+  .bg-menu-item {
+    background-color: hsl(var(--menu-item));
+  }
+  .bg-menu-item-hover {
+    background-color: hsl(var(--menu-item-hover));
+  }
+
+  /* Estilos del perfil */
+  .border-profile {
+    border-color: hsl(var(--border-profile));
+  }
+  .text-profile-primary {
+    color: hsl(0, 0%, 95%);
+  }
+  .text-profile-secondary {
+    color: hsl(0, 0%, 85%);
+  }
+}
