@@ -1,13 +1,15 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import Link from "next/link"
 import { motion } from "framer-motion"
+import { useRouter } from "next/navigation"
 
-export default function LandingPage() {
+export default function Home() {
+  const router = useRouter()
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [isDarkMode, setIsDarkMode] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
   // Dark mode handling
   useEffect(() => {
@@ -25,7 +27,7 @@ export default function LandingPage() {
     }
   }, [isDarkMode, isMounted])
 
-  // Particle effect code (keep your existing particle implementation)
+  // Particle effect
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
@@ -157,17 +159,21 @@ export default function LandingPage() {
     }
   }, [])
 
+  const handleStartClick = () => {
+    setIsLoading(true)
+    setTimeout(() => {
+      router.push('/loading')
+    }, 300)
+  }
+
   return (
     <main className="relative h-screen w-full overflow-hidden bg-primary">
-      {/* Particle background */}
       <canvas 
         ref={canvasRef} 
         className="absolute inset-0 z-0 opacity-90 dark:opacity-80"
       />
 
-      {/* Main content */}
       <div className="relative z-10 flex h-full flex-col items-center justify-center px-4 text-center">
-        {/* Title */}
         <motion.h1
           className="mb-4 text-4xl font-bold tracking-wider text-primary dark:text-primary md:text-5xl lg:text-6xl"
           initial={{ opacity: 0, y: -20 }}
@@ -177,7 +183,6 @@ export default function LandingPage() {
           DIEGO ALEJANDRO OCAMPO
         </motion.h1>
 
-        {/* Subtitle */}
         <motion.h2
           className="mb-8 text-2xl font-medium tracking-wide text-primary md:text-3xl"
           initial={{ opacity: 0, y: -20 }}
@@ -187,7 +192,6 @@ export default function LandingPage() {
           MADROÑERO
         </motion.h2>
 
-        {/* Central decorative element - modified version */}
         <motion.div
           className="mb-10 w-full max-w-xl"
           initial={{ opacity: 0, scale: 0.8 }}
@@ -195,7 +199,7 @@ export default function LandingPage() {
           transition={{ duration: 0.5, delay: 0.4, ease: "backOut" }}
         >
           <div className="flex flex-col items-center space-y-1">
-            <span className={isDarkMode ? 'text-gray-200 text-5xl font-medium ' : 'text-gray-800 text-5xl font-medium'}>쓰</span>
+            <span className={isDarkMode ? 'text-gray-200 text-5xl font-medium' : 'text-gray-800 text-5xl font-medium'}>쓰</span>
             <div className={`flex items-center w-full px-4 ${isDarkMode ? 'text-gray-200' : 'text-black'}`}>
               <div className={`${isDarkMode ? 'bg-white h-0.5 flex-1' : 'bg-gray-800 h-0.5 flex-1'}`}></div> 
               <div className="w-8"></div>
@@ -205,22 +209,20 @@ export default function LandingPage() {
           </div>
         </motion.div>
 
-        {/* Main button */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.6, ease: "easeOut" }}
         >
-          <Link
-            href="/portfolio"
+          <button
+            onClick={handleStartClick}
             className={`rounded-md px-8 py-3 text-lg font-medium shadow-lg transition-smooth hover:shadow-xl ${
               isDarkMode ? 'bg-white text-gray-800' : 'bg-gray-800 text-white'
-            } hover:bg-green-700 dark:hover:bg-blue-700`}
+            } hover:bg-opacity-90`}
           >
             Click To Start
-          </Link>
+          </button>
         </motion.div>
-
       </div>
     </main>
   )
