@@ -4,36 +4,36 @@
   /* Color scheme in HSL */
   --sidebar-color: 268, 15%, 28%;        /* #463C51 - Barra lateral */
   --sidebar-hover: 263, 15%, 35%;        /* Hover barra lateral */
-  --profile-banner: 10, 20%, 50%;        /* #9F8380 - Banner de perfil (versión más oscura) */
+  --profile-banner: 10, 20%, 50%;        /* #9F8380 - Banner de perfil */
   --menu-gradient-start: 33, 41%, 89%;   /* #EDE4D8 - Inicio gradiente */
   --menu-gradient-end: 10, 20%, 60%;     /* #9F8380 - Fin gradiente */
   --menu-item: 220, 15%, 40%;           /* #50596B - Elementos grilla */
   --menu-item-hover: 220, 15%, 35%;     /* Hover elementos */
   --border-profile: 33, 41%, 89%;       /* #EDE4D8 - Borde imagen */
+  --text-primary: 0, 0%, 20%;           /* Texto principal light mode */
+  --text-secondary: 0, 0%, 40%;         /* Texto secundario light mode */
+  --bg-primary: 40, 38%, 95%;           /* Fondo principal light mode */
+}
+
+.dark {
+  /* Dark mode overrides */
+  --sidebar-color: 268, 15%, 18%;        /* Barra lateral oscura */
+  --sidebar-hover: 263, 15%, 25%;        /* Hover barra lateral oscura */
+  --profile-banner: 10, 20%, 30%;        /* Banner de perfil oscuro */
+  --menu-gradient-start: 220, 41%, 15%;  /* Inicio gradiente oscuro */
+  --menu-gradient-end: 220, 41%, 10%;    /* Fin gradiente oscuro */
+  --menu-item: 220, 15%, 25%;           /* Elementos grilla oscuros */
+  --menu-item-hover: 220, 15%, 20%;     /* Hover elementos oscuros */
+  --border-profile: 220, 15%, 30%;      /* Borde imagen oscuro */
+  --text-primary: 0, 0%, 95%;           /* Texto principal dark mode */
+  --text-secondary: 0, 0%, 85%;         /* Texto secundario dark mode */
+  --bg-primary: 220, 41%, 10%;          /* Fondo principal dark mode */
 }
 
 @layer utilities {
-
-    .bg-lighter {
-    background-color: hsl(40, 38%, 95%);
-  }
-  
-  /* Fondo para dark mode */
-  .bg-darker {
-    background-color: hsl(220, 41%, 10%);
-  }
-  
-  /* Cuadrado indicador */
-  .theme-indicator {
-    width: 200px;
-    height: 200px;
-    border: 4px solid hsl(220, 41%, 32%);
-    background-color: hsl(33, 41%, 89%);
-  }
-  
-  .dark .theme-indicator {
-    border-color: hsl(220, 15%, 60%);
-    background-color: hsl(220, 41%, 20%);
+  /* Fondo principal */
+  .bg-primary {
+    background-color: hsl(var(--bg-primary));
   }
   
   /* Barra lateral */
@@ -41,6 +41,9 @@
     background-color: hsl(var(--sidebar-color));
   }
   .bg-sidebar-hover {
+    background-color: hsl(var(--sidebar-hover));
+  }
+  .bg-sidebar-hover:hover {
     background-color: hsl(var(--sidebar-hover));
   }
 
@@ -65,15 +68,33 @@
   .bg-menu-item-hover {
     background-color: hsl(var(--menu-item-hover));
   }
+  .bg-menu-item-hover:hover {
+    background-color: hsl(var(--menu-item-hover));
+  }
 
   /* Estilos del perfil */
   .border-profile {
     border-color: hsl(var(--border-profile));
   }
-  .text-profile-primary {
-    color: hsl(0, 0%, 95%);
+  
+  /* Textos */
+  .text-primary {
+    color: hsl(var(--text-primary));
   }
-  .text-profile-secondary {
-    color: hsl(0, 0%, 85%);
+  .text-secondary {
+    color: hsl(var(--text-secondary));
+  }
+  
+  /* Cuadrado indicador */
+  .theme-indicator {
+    width: 200px;
+    height: 200px;
+    border: 4px solid hsl(220, 41%, 32%);
+    background-color: hsl(var(--menu-gradient-start));
+  }
+  
+  .dark .theme-indicator {
+    border-color: hsl(220, 15%, 60%);
+    background-color: hsl(var(--menu-gradient-end));
   }
 }
