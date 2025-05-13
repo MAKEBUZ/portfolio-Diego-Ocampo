@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  /* Color scheme in HSL */
+  /* Existing color scheme in HSL */
   --sidebar-color: 268, 15%, 28%;        /* #463C51 - Barra lateral */
   --sidebar-hover: 263, 15%, 35%;        /* Hover barra lateral */
   --profile-banner: 10, 20%, 50%;        /* #9F8380 - Banner de perfil */
@@ -13,10 +13,27 @@
   --text-primary: 0, 0%, 20%;           /* Texto principal light mode */
   --text-secondary: 0, 0%, 40%;         /* Texto secundario light mode */
   --bg-primary: 40, 38%, 95%;           /* Fondo principal light mode */
+
+  /* New Bitácora color scheme */
+  --color-primary: 215, 16%, 38%;       /* #4b5563 - Fondo general gris */
+  --color-book-bg: 45, 100%, 95%;       /* #fff8e6 - Fondo del libro */
+  --color-book-edge: 30, 46%, 36%;      /* #7c552e - Borde del libro */
+  --color-tab-sobre-mi: 88, 77%, 44%;   /* #65a30d - Verde */
+  --color-tab-cv: 271, 81%, 60%;        /* #9333ea - Morado */
+  --color-tab-pasatiempos: 217, 91%, 60%; /* #3b82f6 - Azul */
+  --color-tab-placeholder: 220, 13%, 46%; /* #6b7280 - Gris */
+  --color-accent: 38, 92%, 50%;         /* #f59e0b - Ámbar */
+  --color-accent-light: 48, 96%, 89%;   /* #fef3c7 - Ámbar claro */
+  --color-avatar-border: 38, 92%, 50%;  /* #f59e0b */
+  --color-avatar-border-inactive: 220, 14%, 84%; /* #d1d5db */
+  --color-card-bg: 45, 100%, 95%;       /* #fff8e6 */
+  --color-card-border: 48, 96%, 89%;    /* #fde68a */
+  --color-button-bg: 217, 33%, 17%;     /* #1f2937 */
+  --color-button-hover: 216, 19%, 27%;  /* #374151 */
 }
 
 .dark {
-  /* Dark mode overrides */
+  /* Existing dark mode overrides */
   --sidebar-color: 268, 15%, 18%;        /* Barra lateral oscura */
   --sidebar-hover: 263, 15%, 25%;        /* Hover barra lateral oscura */
   --profile-banner: 10, 20%, 30%;        /* Banner de perfil oscuro */
@@ -28,15 +45,30 @@
   --text-primary: 0, 0%, 95%;           /* Texto principal dark mode */
   --text-secondary: 0, 0%, 85%;         /* Texto secundario dark mode */
   --bg-primary: 220, 41%, 10%;          /* Fondo principal dark mode */
+
+  /* New Bitácora dark mode overrides */
+  --color-primary: 220, 41%, 10%;       /* Fondo oscuro */
+  --color-book-bg: 30, 7%, 14%;         /* #252220 - Fondo libro oscuro */
+  --color-book-edge: 30, 7%, 24%;       /* Borde libro oscuro */
+  --color-tab-sobre-mi: 88, 77%, 34%;   /* Verde más oscuro */
+  --color-tab-cv: 271, 81%, 50%;        /* Morado más oscuro */
+  --color-tab-pasatiempos: 217, 91%, 50%; /* Azul más oscuro */
+  --color-tab-placeholder: 220, 13%, 36%; /* Gris más oscuro */
+  --color-accent: 38, 92%, 40%;         /* Ámbar más oscuro */
+  --color-accent-light: 48, 96%, 20%;   /* Ámbar claro oscuro */
+  --color-avatar-border: 38, 92%, 40%;  /* Ámbar oscuro */
+  --color-avatar-border-inactive: 220, 14%, 44%; /* Gris oscuro */
+  --color-card-bg: 30, 7%, 14%;         /* Fondo tarjeta oscuro */
+  --color-card-border: 48, 96%, 20%;    /* Borde tarjeta oscuro */
+  --color-button-bg: 0, 0%, 95%;       /* Botón claro */
+  --color-button-hover: 0, 0%, 85%;     /* Botón hover claro */
 }
 
 @layer utilities {
-  /* Fondo principal */
+  /* Existing utilities */
   .bg-primary {
     background-color: hsl(var(--bg-primary));
   }
-  
-  /* Barra lateral */
   .bg-sidebar {
     background-color: hsl(var(--sidebar-color));
   }
@@ -46,13 +78,9 @@
   .bg-sidebar-hover:hover {
     background-color: hsl(var(--sidebar-hover));
   }
-
-  /* Banner de perfil */
   .bg-profile-banner {
     background-color: hsl(var(--profile-banner));
   }
-
-  /* Gradiente del menú */
   .bg-menu-gradient {
     background: linear-gradient(
       to bottom,
@@ -60,8 +88,6 @@
       hsl(var(--menu-gradient-end))
     );
   }
-
-  /* Elementos de la grilla */
   .bg-menu-item {
     background-color: hsl(var(--menu-item));
   }
@@ -71,30 +97,99 @@
   .bg-menu-item-hover:hover {
     background-color: hsl(var(--menu-item-hover));
   }
-
-  /* Estilos del perfil */
   .border-profile {
     border-color: hsl(var(--border-profile));
   }
-  
-  /* Textos */
   .text-primary {
     color: hsl(var(--text-primary));
   }
   .text-secondary {
     color: hsl(var(--text-secondary));
   }
-  
-  /* Cuadrado indicador */
   .theme-indicator {
     width: 200px;
     height: 200px;
     border: 4px solid hsl(220, 41%, 32%);
     background-color: hsl(var(--menu-gradient-start));
   }
-  
   .dark .theme-indicator {
     border-color: hsl(220, 15%, 60%);
     background-color: hsl(var(--menu-gradient-end));
+  }
+
+  /* New Bitácora utilities */
+  .bitacora-bg {
+    background-color: hsl(var(--color-primary));
+  }
+  .book-bg {
+    background-color: hsl(var(--color-book-bg));
+  }
+  .book-edge {
+    border-color: hsl(var(--color-book-edge));
+  }
+  .tab-sobre-mi {
+    background-color: hsl(var(--color-tab-sobre-mi));
+  }
+  .tab-cv {
+    background-color: hsl(var(--color-tab-cv));
+  }
+  .tab-pasatiempos {
+    background-color: hsl(var(--color-tab-pasatiempos));
+  }
+  .tab-placeholder {
+    background-color: hsl(var(--color-tab-placeholder));
+  }
+  .accent-bg {
+    background-color: hsl(var(--color-accent));
+  }
+  .accent-light-bg {
+    background-color: hsl(var(--color-accent-light));
+  }
+  .avatar-border-active {
+    border-color: hsl(var(--color-avatar-border));
+  }
+  .avatar-border-inactive {
+    border-color: hsl(var(--color-avatar-border-inactive));
+  }
+  .card-bg {
+    background-color: hsl(var(--color-card-bg));
+  }
+  .card-border {
+    border-color: hsl(var(--color-card-border));
+  }
+  .button-bg {
+    background-color: hsl(var(--color-button-bg));
+  }
+  .button-hover:hover {
+    background-color: hsl(var(--color-button-hover));
+  }
+  .book-shadow {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+  .book-texture {
+    background-image: 
+      linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 15px 15px;
+  }
+  .tab-transition {
+    transition: all 0.3s ease;
+  }
+  .tab-active {
+    transform: translateX(8px);
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  }
+  @keyframes pageFlip {
+    0% {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  .page-enter {
+    animation: pageFlip 0.5s ease forwards;
   }
 }
