@@ -94,7 +94,7 @@ export default function Home() {
     scene.add(tube)
 
     // Animación
-    let percentage = { value: 0 }
+    const percentage = { value: 0 }
     gsap.to(percentage, {
       value: 1,
       duration: 10,
@@ -125,8 +125,9 @@ export default function Home() {
 
     return () => {
       window.removeEventListener("resize", handleResize)
-      if (containerRef.current && renderer.domElement.parentNode === containerRef.current) {
-        containerRef.current.removeChild(renderer.domElement)
+      const container = containerRef.current
+      if (container && renderer.domElement.parentNode === container) {
+          container.removeChild(renderer.domElement)
       }
     }
   }, [isDarkMode, isMounted])
