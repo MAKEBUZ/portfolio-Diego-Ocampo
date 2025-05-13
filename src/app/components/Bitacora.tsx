@@ -32,7 +32,7 @@ const Avatar = ({ src, alt, selected, onClick }: AvatarProps) => (
     className={`rounded-full border-4 ${selected ? 'avatar-border-active shadow-lg' : 'avatar-border-inactive'} overflow-hidden cursor-pointer hover:border-amber-400 transition-all`}
     onClick={onClick}
   >
-    <Image src={src} alt={alt} className="w-full h-full object-cover" />
+    <Image src={src} alt={alt} width={200} height={200} className="w-full h-full object-cover" />
   </div>
 );
 
@@ -41,7 +41,7 @@ const HobbyCard = ({ title, image, onClick }: HobbyProps & { onClick: () => void
     className="relative overflow-hidden rounded-full shadow-md hover:shadow-xl cursor-pointer transition-all duration-300"
     onClick={onClick}
   >
-    <Image src={image} alt={title} className="w-full h-32 object-cover" />
+    <Image src={image} alt={title} width={200} height={150} className="w-full h-32 object-cover" />
     <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-gray-900 to-transparent p-2">
       <h4 className="font-medium text-light">{title}</h4>
     </div>
@@ -167,7 +167,7 @@ export default function Bitacora() {
               <div className="space-y-4">
                 <div className="w-full">
                   <div className="card-bg p-4 rounded-lg border-2 card-border shadow-inner">
-                    <Image src="/api/placeholder/600/150" alt="Banner" className="w-full h-32 object-cover rounded" />
+                    <Image src="/api/placeholder/600/150" alt="Banner" width={600} height={150} className="w-full h-32 object-cover rounded" />
                     <div className="text-xs text-secondary mt-2 italic">
                       &quot;Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.&quot;
                     </div>
@@ -275,9 +275,11 @@ export default function Bitacora() {
                   </div>
                   
                   <Image 
-                    src={hobbies[selectedHobby].image} 
-                    alt={hobbies[selectedHobby].title} 
-                    className="w-full h-64 object-cover rounded-lg shadow-md"
+                      src={hobbies[selectedHobby].image} 
+                      alt={hobbies[selectedHobby].title} 
+                      width={200} 
+                      height={150} 
+                      className="w-full h-64 object-cover rounded-lg shadow-md"
                   />
                   
                   <div className="card-bg p-4 rounded-lg border-2 card-border shadow-inner">

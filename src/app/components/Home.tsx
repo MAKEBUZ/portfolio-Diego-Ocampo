@@ -3,17 +3,17 @@
 import { useEffect, useRef, useState } from "react"
 import { motion } from "framer-motion"
 import { useRouter } from "next/navigation"
+import * as THREE from 'three'
+import { gsap } from 'gsap'
 
 export default function Home() {
   const router = useRouter()
-  const canvasRef = useRef<HTMLCanvasElement>(null)
-  const [isDarkMode, setIsDarkMode] = useState(false)
+  const containerRef = useRef<HTMLDivElement>(null)
   const [isMounted, setIsMounted] = useState(false)
-  const [isClient, setIsClient] = useState(false)
+  const [isDarkMode, setIsDarkMode] = useState(false)
 
-  // Solo ejecutar en el cliente
+  // Manejo del tema oscuro
   useEffect(() => {
-    setIsClient(true)
     setIsMounted(true)
     const savedTheme = localStorage.getItem('theme')
     if (savedTheme) {
@@ -28,153 +28,127 @@ export default function Home() {
     }
   }, [isDarkMode, isMounted])
 
-  // Particle effect - solo en cliente
+  // ThreeJS Gusano setup con tema
   useEffect(() => {
-    if (!isClient) return
+    if (!containerRef.current || !isMounted) return
 
-    const canvas = canvasRef.current
-    if (!canvas) return
+    const scene = new THREE.Scene()
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
+    camera.position.z = 0
 
-    const ctx = canvas.getContext("2d")
-    if (!ctx) return
+    const renderer = new THREE.WebGLRenderer({ antialias: true })
+    renderer.setSize(window.innerWidth, window.innerHeight)
+    renderer.setClearColor(isDarkMode ? 0x111111 : 0xf8f8f8) // Fondo oscuro/claro
+    containerRef.current.appendChild(renderer.domElement)
+    renderer.domElement.classList.add('absolute', 'top-0', 'left-0', 'z-0')
 
-    // Configuración adaptativa
-    const getSettings = () => {
-      const isMobile = window.innerWidth < 768
-      return {
-        particleCount: isMobile ? 60 : 120,
-        maxDistance: isMobile ? 150 : 250,
-        particleSize: isMobile ? 1.5 : 2.5,
-        lineWidth: isMobile ? 0.8 : 1.5,
-        speed: isMobile ? 0.4 : 0.7
-      }
+    // Configuración del material con tema
+    const wireColor = isDarkMode ? 0xffffff : 0x333333 // Líneas blancas/negras
+    const baseColor = isDarkMode ? 0x111111 : 0xf8f8f8 // Fondo oscuro/claro
+
+    const uniforms = {
+      uTime: { value: 0.0 },
+      uWireColor: { value: new THREE.Color(wireColor) },
+      uBaseColor: { value: new THREE.Color(baseColor) }
     }
 
-    let settings = getSettings()
-    let particles: Particle[] = []
-    let animationFrameId: number
-
-    class Particle {
-      x!: number
-      y!: number
-      directionX: number
-      directionY: number
-      size: number
-      color: string
-
-      constructor() {
-        if (canvas) {
-          this.x = Math.random() * canvas.width
-          this.y = Math.random() * canvas.height
+    const wireframeMaterial = new THREE.ShaderMaterial({
+      uniforms,
+      vertexShader: `
+        varying vec2 vUv;
+        void main() {
+          vUv = uv;
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
         }
-        this.directionX = (Math.random() - 0.5) * settings.speed
-        this.directionY = (Math.random() - 0.5) * settings.speed
-        this.size = Math.random() * settings.particleSize + 1
+      `,
+      fragmentShader: `
+        uniform float uTime;
+        uniform vec3 uWireColor;
+        uniform vec3 uBaseColor;
+        varying vec2 vUv;
 
-        const isDark = document.documentElement.classList.contains('dark')
-        this.color = isDark 
-          ? `rgba(150, 200, 255, ${Math.random() * 0.5 + 0.3})`
-          : `rgba(50, 120, 220, ${Math.random() * 0.5 + 0.3})`
-      }
+        void main() {
+          vec2 grid = abs(fract(vUv * 20.0 - 0.5) - 0.5);
+          vec2 gridWidth = fwidth(vUv * 20.0);
+          float lineX = smoothstep(0.0, gridWidth.x * 1.0, grid.x);
+          float lineY = smoothstep(0.0, gridWidth.y * 1.0, grid.y);
+          float line = 1.0 - min(lineX, lineY);
 
-      update() {
-        if (!canvas) return
-        if (this.x > canvas.width || this.x < 0) {
-          this.directionX = -this.directionX * 0.9
+          vec3 finalColor = mix(uBaseColor, uWireColor, line);
+          gl_FragColor = vec4(finalColor, 1.0);
         }
-        if (this.y > canvas.height || this.y < 0) {
-          this.directionY = -this.directionY * 0.9
-        }
+      `,
+      side: THREE.BackSide
+    })
 
-        this.x += this.directionX
-        this.y += this.directionY
-      }
+    const path = new THREE.CatmullRomCurve3([
+      new THREE.Vector3(0, 0, 0),
+      new THREE.Vector3(0, 0, -10),
+      new THREE.Vector3(3, 2, -20),
+      new THREE.Vector3(-3, -2, -30),
+      new THREE.Vector3(0, 0, -40)
+    ])
 
-      draw() {
-        if (!ctx) return
-        ctx.beginPath()
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2)
-        ctx.fillStyle = this.color
-        ctx.fill()
-      }
-    }
+    const geometry = new THREE.TubeGeometry(path, 200, 2, 32, false)
+    const tube = new THREE.Mesh(geometry, wireframeMaterial)
+    scene.add(tube)
 
-    const init = () => {
-      particles = []
-      for (let i = 0; i < settings.particleCount; i++) {
-        particles.push(new Particle())
+    // Animación
+    let percentage = { value: 0 }
+    gsap.to(percentage, {
+      value: 1,
+      duration: 10,
+      ease: "linear",
+      repeat: -1,
+      onUpdate: () => {
+        const p1 = path.getPointAt(percentage.value)
+        const p2 = path.getPointAt((percentage.value + 0.01) % 1)
+        camera.position.set(p1.x, p1.y, p1.z)
+        camera.lookAt(p2)
       }
-    }
+    })
 
     const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
-
-      const isDark = document.documentElement.classList.contains('dark')
-      const connectionColor = isDark ? 'rgba(150, 220, 255, 0.5)' : 'rgba(50, 140, 230, 0.5)'
-
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < Math.min(particles.length, i + 15); j++) {
-          const dx = particles[i].x - particles[j].x
-          const dy = particles[i].y - particles[j].y
-          const distance = Math.sqrt(dx * dx + dy * dy)
-
-          if (distance < settings.maxDistance) {
-            ctx.beginPath()
-            const opacity = 1 - distance / settings.maxDistance
-            ctx.strokeStyle = connectionColor.replace('0.5', `${opacity * 0.5}`)
-            ctx.lineWidth = opacity * settings.lineWidth
-            ctx.moveTo(particles[i].x, particles[i].y)
-            ctx.lineTo(particles[j].x, particles[j].y)
-            ctx.stroke()
-          }
-        }
-        particles[i].update()
-        particles[i].draw()
-      }
-
-      animationFrameId = requestAnimationFrame(animate)
+      uniforms.uTime.value += 0.01
+      renderer.render(scene, camera)
+      requestAnimationFrame(animate)
     }
+    animate()
 
     const handleResize = () => {
-      canvas.width = window.innerWidth
-      canvas.height = window.innerHeight
-      settings = getSettings()
-      init()
+      camera.aspect = window.innerWidth / window.innerHeight
+      camera.updateProjectionMatrix()
+      renderer.setSize(window.innerWidth, window.innerHeight)
     }
-
-    // Configuración inicial
-    canvas.width = window.innerWidth
-    canvas.height = window.innerHeight
-    init()
-    animate()
 
     window.addEventListener("resize", handleResize)
 
     return () => {
       window.removeEventListener("resize", handleResize)
-      cancelAnimationFrame(animationFrameId)
+      if (containerRef.current && renderer.domElement.parentNode === containerRef.current) {
+        containerRef.current.removeChild(renderer.domElement)
+      }
     }
-  }, [isClient]) // Solo se ejecuta cuando isClient cambia
+  }, [isDarkMode, isMounted])
 
   const handleStartClick = () => {
-    setTimeout(() => {
-      router.push('/loading')
-    }, 300)
+    router.push('/loading')
   }
 
-  return (
-    <main className="relative h-screen w-full overflow-hidden bg-primary">
-      {/* Canvas solo se muestra en cliente */}
-      {isClient && (
-        <canvas 
-          ref={canvasRef} 
-          className="absolute inset-0 z-0 opacity-80 dark:opacity-70 md:opacity-90 md:dark:opacity-80"
-        />
-      )}
+  // Estilos condicionales basados en isDarkMode
+  const textColor = isDarkMode ? 'text-white' : 'text-gray-900'
+  const secondaryTextColor = isDarkMode ? 'text-gray-300' : 'text-gray-700'
+  const dividerColor = isDarkMode ? 'bg-white' : 'bg-gray-900'
+  const buttonStyles = isDarkMode 
+    ? 'bg-white text-gray-800 hover:bg-gray-100' 
+    : 'bg-gray-800 text-white hover:bg-gray-700'
 
-      <div className="relative z-10 flex h-full flex-col items-center justify-center px-4 text-center">
+  return (
+    <div ref={containerRef} className="relative w-full h-screen overflow-hidden">
+      {/* Contenido principal */}
+      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center">
         <motion.h1
-          className="mb-4 text-4xl font-bold tracking-wider text-primary dark:text-primary md:text-5xl lg:text-6xl"
+          className={`mb-4 text-4xl font-bold tracking-wider ${textColor} md:text-5xl lg:text-6xl`}
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
@@ -183,7 +157,7 @@ export default function Home() {
         </motion.h1>
 
         <motion.h2
-          className="mb-8 text-2xl font-medium tracking-wide text-primary md:text-3xl"
+          className={`mb-8 text-2xl font-medium tracking-wide ${secondaryTextColor} md:text-3xl`}
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
@@ -198,13 +172,13 @@ export default function Home() {
           transition={{ duration: 0.5, delay: 0.4, ease: "backOut" }}
         >
           <div className="flex flex-col items-center space-y-1">
-            <span className={isDarkMode ? 'text-gray-200 text-5xl font-medium' : 'text-gray-800 text-5xl font-medium'}>쓰</span>
-            <div className={`flex items-center w-full px-4 ${isDarkMode ? 'text-gray-200' : 'text-black'}`}>
-              <div className={`${isDarkMode ? 'bg-white h-0.5 flex-1' : 'bg-gray-800 h-0.5 flex-1'}`}></div> 
+            <span className={`text-5xl font-medium ${textColor}`}>쓰</span>
+            <div className="flex items-center w-full px-4">
+              <div className={`h-0.5 flex-1 ${dividerColor}`}></div> 
               <div className="w-8"></div>
-              <div className={`${isDarkMode ? 'bg-white h-0.5 flex-1' : 'bg-gray-800 h-0.5 flex-1'}`}></div>
+              <div className={`h-0.5 flex-1 ${dividerColor}`}></div>
             </div>
-            <span className={isDarkMode ? 'text-gray-200 text-5xl font-medium transform scale-y-[-1]' : 'text-gray-800 text-5xl font-medium transform scale-y-[-1]'}>쓰</span>
+            <span className={`text-5xl font-medium ${textColor} transform scale-y-[-1]`}>쓰</span>
           </div>
         </motion.div>
 
@@ -215,14 +189,12 @@ export default function Home() {
         >
           <button
             onClick={handleStartClick}
-            className={`rounded-md px-8 py-3 text-lg font-medium shadow-lg transition-all hover:shadow-xl ${
-              isDarkMode ? 'bg-white text-gray-800 hover:bg-gray-100' : 'bg-gray-800 text-white hover:bg-gray-700'
-            }`}
+            className={`rounded-md px-8 py-3 text-lg font-medium shadow-lg transition-all hover:shadow-xl ${buttonStyles}`}
           >
             Click To Start
           </button>
         </motion.div>
       </div>
-    </main>
+    </div>
   )
 }
