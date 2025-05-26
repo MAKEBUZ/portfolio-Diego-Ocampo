@@ -16,7 +16,9 @@ import {
   Grid,
   Moon,
   Sun,
-  Clock
+  Clock,
+  FileText,
+  Gamepad2
 } from 'lucide-react';
 import Image from 'next/image';
 
@@ -77,7 +79,6 @@ const Menu: React.FC = () => {
   const [showThemeSelector, setShowThemeSelector] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
 
-  // Solo se ejecuta en el cliente
   useEffect(() => {
     setIsMounted(true);
     const savedTheme = localStorage.getItem('theme');
@@ -89,6 +90,7 @@ const Menu: React.FC = () => {
   useEffect(() => {
     if (isMounted) {
       document.documentElement.classList.toggle('dark', isDarkMode);
+      localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
     }
   }, [isDarkMode, isMounted]);
 
@@ -112,11 +114,14 @@ const Menu: React.FC = () => {
     setShowThemeSelector(false);
   };
 
-  // Evitar renderizado en el servidor de partes que dependen del cliente
+  const navigateToPortfolio = (tab: 'sobre-mi' | 'cv' | 'pasatiempos') => {
+    closeMenu();
+    window.location.href = `/portfolio#${tab}`;
+  };
+
   if (!isMounted) {
     return (
       <div className={`min-h-screen relative overflow-hidden z-50 ${isDarkMode ? 'dark:bg-darker' : 'bg-lighter'} transition-colors duration-300`}>
-        {/* Solo muestra el botón de menú en el SSR */}
         <button
           className="fixed left-4 top-4 z-50 p-3 rounded-full shadow-lg bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm border border-gray-200 dark:border-gray-600"
           aria-label="Toggle menu"
@@ -129,7 +134,6 @@ const Menu: React.FC = () => {
 
   return (
     <div className={`min-h-screen relative overflow-hidden z-50 ${isDarkMode ? 'dark:bg-darker' : 'bg-lighter'} transition-colors duration-300`}>
-      {/* Botón flotante para abrir el menú */}
       <motion.button
         onClick={toggleMenu}
         className="fixed left-1.5 top-2 z-50 p-3 rounded-full shadow-lg bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm border border-gray-200 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all"
@@ -144,11 +148,9 @@ const Menu: React.FC = () => {
         )}
       </motion.button>
 
-      {/* Menú completo (sidebar + panel) */}
       <AnimatePresence>
         {isMenuOpen && (
           <>
-            {/* Fondo oscuro semitransparente */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -158,9 +160,7 @@ const Menu: React.FC = () => {
               onClick={closeMenu}
             />
             
-            {/* Contenedor del menú */}
             <div className="fixed inset-0 z-40 flex overflow-hidden">
-              {/* Sidebar */}
               <motion.div
                 initial={{ x: -64 }}
                 animate={{ x: 0 }}
@@ -197,7 +197,6 @@ const Menu: React.FC = () => {
                 </div>
               </motion.div>
 
-              {/* Panel del menú principal */}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -206,7 +205,6 @@ const Menu: React.FC = () => {
                 className="h-full bg-sidebar flex-1 overflow-y-auto bg-menu-gradient"
                 style={{ maxWidth: '420px' }}
               >
-                {/* Header Banner */}
                 <div className="bg-profile-banner p-8 relative">
                   <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-start">
                     <div className="relative w-24 h-24 rounded-full overflow-hidden border-4 border-profile bg-white">
@@ -225,14 +223,13 @@ const Menu: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Menu Grid */}
                 <div className="p-4">
                   <div className="grid grid-cols-2 gap-3">
                     <MenuItem 
                       title="Perfil" 
                       icon={<User size={48} />} 
-                      href="/profile" 
-                      onClick={closeMenu}
+                      href="#"
+                      onClick={() => navigateToPortfolio('sobre-mi')}
                     />
                     <MenuItem 
                       title="Testimonios" 
@@ -248,15 +245,15 @@ const Menu: React.FC = () => {
                     />
                     <MenuItem 
                       title="CV" 
-                      icon={<User size={48} />} 
-                      href="/cv" 
-                      onClick={closeMenu}
+                      icon={<FileText size={48} />} 
+                      href="#"
+                      onClick={() => navigateToPortfolio('cv')}
                     />
                     <MenuItem 
                       title="Pasatiempos" 
-                      icon={<User size={48} />} 
-                      href="/hobbies" 
-                      onClick={closeMenu}
+                      icon={<Gamepad2 size={48} />} 
+                      href="#"
+                      onClick={() => navigateToPortfolio('pasatiempos')}
                     />
                     <MenuItem 
                       title="Información" 
@@ -272,7 +269,6 @@ const Menu: React.FC = () => {
         )}
       </AnimatePresence>
 
-      {/* Theme Selector Popup */}
       <AnimatePresence>
         {showThemeSelector && isMounted && (
           <motion.div

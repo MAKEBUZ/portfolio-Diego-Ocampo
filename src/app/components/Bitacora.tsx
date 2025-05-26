@@ -62,6 +62,22 @@ export default function Bitacora() {
     if (savedTheme) {
       setIsDarkMode(savedTheme === 'dark');
     }
+
+    // Manejar el hash de la URL al cargar
+    const handleHashChange = () => {
+      const hash = window.location.hash.substring(1) as TabId;
+      if (hash && ['sobre-mi', 'cv', 'pasatiempos'].includes(hash)) {
+        setActiveTab(hash);
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    handleHashChange();
+    window.addEventListener('hashchange', handleHashChange);
+
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+    };
   }, []);
 
   useEffect(() => {
@@ -333,6 +349,8 @@ export default function Bitacora() {
                   onClick={() => {
                     setActiveTab(tab.id);
                     setIsMobileMenuOpen(false);
+                    // Actualizar el hash de la URL
+                    window.location.hash = tab.id;
                   }}
                   className={`p-3 rounded-lg md:rounded-l-lg text-light text-left tab-transition flex flex-col items-center ${tab.colorClass} ${activeTab === tab.id ? 'tab-active' : 'opacity-80 hover:opacity-100'}`}
                 >
