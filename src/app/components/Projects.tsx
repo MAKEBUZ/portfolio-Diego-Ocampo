@@ -169,8 +169,8 @@ export default function ProjectsPreview() {
         ))}
       </div>
 
-      <div className="flex flex-row items-start justify-center w-full max-w-6xl z-10 gap-8">
-        <div className="flex flex-col gap-2 min-w-[150px] mt-2 select-none">
+      <div className="flex flex-col md:flex-row items-center md:items-start justify-center w-full max-w-6xl z-10 gap-6 md:gap-10 px-2 md:px-0 mt-8 md:mt-0">
+        <div className="flex flex-row md:flex-col gap-2 min-w-[100px] w-full md:w-auto justify-center md:justify-start mb-4 md:mb-0">
           {opciones.map((op) => (
             <button
               key={op.key}
@@ -191,22 +191,22 @@ export default function ProjectsPreview() {
           ))}
         </div>
 
-        <div className="flex flex-col items-center justify-center flex-shrink-0">
-          <div className={`w-200 h-100 bg-white rounded-[30px_80px_30px_80px/40px_30px_80px_30px] overflow-hidden shadow-xl border-4 ${isDarkMode ? 'border-blue-300' : 'border-yellow-300'} relative`}>
-            <div className="relative w-full h-full">
+        <div className="flex flex-col items-center justify-center flex-shrink-0 w-full md:w-auto">
+          <div className={`w-full max-w-[320px] md:max-w-[400px] aspect-[4/3] bg-white rounded-[30px_80px_30px_80px/40px_30px_80px_30px] overflow-hidden shadow-xl border-4 ${isDarkMode ? 'border-blue-300' : 'border-yellow-300'} relative`}>
+            <div className="relative w-full h-full min-h-[160px] md:min-h-[220px]">
               <Image
                 src={proyectoActual.imagen}
                 alt={proyectoActual.titulo}
                 fill
                 className="object-cover"
-                sizes="(max-width: 800px) 100vw, 800px"
+                sizes="(max-width: 400px) 100vw, 400px"
               />
               <div className="absolute inset-0 pointer-events-none bg-gradient-to-tr from-white/10 to-transparent" />
             </div>
           </div>
         </div>
 
-        <div className={`flex flex-col justify-start text-left max-w-md mt-2 min-h-[450px] min-w-[350px] h-[280px] w-[350px] overflow-auto transition-all duration-300 scrollbar-thin ${isDarkMode ? 'scrollbar-thumb-blue-400 scrollbar-track-blue-900/30' : 'scrollbar-thumb-yellow-400 scrollbar-track-yellow-900/30'} scrollbar-thumb-rounded-full scrollbar-track-rounded-full`}>
+        <div className={`flex flex-col justify-start text-left max-w-md mt-4 md:mt-2 min-h-[180px] min-w-[180px] h-auto w-full md:w-[350px] overflow-auto transition-all duration-300 scrollbar-thin ${isDarkMode ? 'scrollbar-thumb-blue-400 scrollbar-track-blue-900/30' : 'scrollbar-thumb-yellow-400 scrollbar-track-yellow-900/30'} scrollbar-thumb-rounded-full scrollbar-track-rounded-full bg-transparent p-4 md:p-6 rounded-xl`}>
           {getContenido()}
         </div>
       </div>
