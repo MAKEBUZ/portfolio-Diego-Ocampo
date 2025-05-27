@@ -1,100 +1,170 @@
+"use client";
+
 import React, { useState } from "react";
 
 const proyectos = [
   {
-    nombre: "Proyecto 1",
-    imagen: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80",
-    detalles: "Detalles del Proyecto 1...",
-    link: "https://ejemplo.com/1",
-    informacion: "Información adicional del Proyecto 1...",
-    avatar: "https://randomuser.me/api/portraits/men/32.jpg",
+    id: 1,
+    titulo: "Proyecto 1",
+    descripcion:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. En id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Laculis lacinia nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.",
+    imagen: "https://i.imgur.com/4M34hi2.png",
+    detalles: "Estos son los detalles del Proyecto 1.",
+    link: "https://proyecto1.com",
+    informacion: "Información adicional sobre el Proyecto 1.",
+    avatar: "https://i.imgur.com/4M34hi2.png",
   },
   {
-    nombre: "Proyecto 2",
-    imagen: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80",
-    detalles: "Detalles del Proyecto 2...",
-    link: "https://ejemplo.com/2",
-    informacion: "Información adicional del Proyecto 2...",
-    avatar: "https://randomuser.me/api/portraits/women/44.jpg",
-  },
-  {
-    nombre: "Proyecto 3",
-    imagen: "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80",
-    detalles: "Detalles del Proyecto 3...",
-    link: "https://ejemplo.com/3",
-    informacion: "Información adicional del Proyecto 3...",
-    avatar: "https://randomuser.me/api/portraits/men/65.jpg",
+    id: 2,
+    titulo: "Proyecto 2",
+    descripcion:
+      "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    imagen: "https://i.imgur.com/2nCt3Sbl.jpg",
+    detalles: "Estos son los detalles del Proyecto 2.",
+    link: "https://proyecto2.com",
+    informacion: "Información adicional sobre el Proyecto 2.",
+    avatar: "https://i.imgur.com/2nCt3Sbl.jpg",
   },
 ];
 
 const opciones = [
   { key: "detalles", label: "Detalles" },
   { key: "link", label: "Link" },
-  { key: "informacion", label: "Informacion" },
+  { key: "informacion", label: "Información" },
 ];
 
-export default function Projects() {
-  const [proyectoIdx, setProyectoIdx] = useState(0);
-  const [opcion, setOpcion] = useState("detalles");
-  const proyecto = proyectos[proyectoIdx];
+function StarBackground() {
+  return (
+    <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
+      {[...Array(80)].map((_, i) => (
+        <div
+          key={i}
+          className="absolute rounded-full bg-white opacity-30 animate-pulse"
+          style={{
+            width: `${Math.random() * 2 + 1}px`,
+            height: `${Math.random() * 2 + 1}px`,
+            top: `${Math.random() * 100}%`,
+            left: `${Math.random() * 100}%`,
+            filter: `blur(${Math.random() * 1.5}px)`
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
+export default function ProjectsPreview() {
+  const [proyectoActual, setProyectoActual] = useState(proyectos[0]);
+  const [opcionActual, setOpcionActual] = useState("detalles");
+  
+  const getContenido = () => {
+    switch (opcionActual) {
+      case "detalles":
+        return (
+          <>
+            <h2 className="text-3xl font-bold text-yellow-900 dark:text-white mb-2 border-b-2 border-yellow-400/60 dark:border-blue-400/60 pb-2 drop-shadow-lg">
+              {proyectoActual.titulo}
+            </h2>
+            <p className="text-yellow-900 dark:text-blue-100 text-base mb-4 leading-relaxed font-medium drop-shadow">
+              {proyectoActual.descripcion}
+            </p>
+            <p className="text-yellow-900 dark:text-blue-100 text-base leading-relaxed mt-2">
+              {proyectoActual.detalles}
+            </p>
+          </>
+        );
+      case "link":
+        return (
+          <>
+            <h2 className="text-3xl font-bold text-yellow-900 dark:text-white mb-2 border-b-2 border-yellow-400/60 dark:border-blue-400/60 pb-2 drop-shadow-lg">
+              {proyectoActual.titulo}
+            </h2>
+            <a
+              href={proyectoActual.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-yellow-500 dark:text-blue-300 underline text-xl mt-4 block hover:text-yellow-400 dark:hover:text-blue-200 transition"
+            >
+              {proyectoActual.link}
+            </a>
+          </>
+        );
+      case "informacion":
+        return (
+          <>
+            <h2 className="text-3xl font-bold text-yellow-900 dark:text-white mb-2 border-b-2 border-yellow-400/60 dark:border-blue-400/60 pb-2 drop-shadow-lg">
+              {proyectoActual.titulo}
+            </h2>
+            <p className="text-yellow-900 dark:text-blue-100 text-base leading-relaxed mt-2">
+              {proyectoActual.informacion}
+            </p>
+          </>
+        );
+      default:
+        return null;
+    }
+  };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 relative">
-      {/* Carrusel de avatares */}
-      <div className="flex space-x-4 mb-8 mt-6">
-        {proyectos.map((p, idx) => (
+    <div className="relative w-screen h-screen min-h-screen min-w-full flex flex-col items-center justify-center bg-gradient-to-br from-yellow-100 to-yellow-800 dark:from-blue-950 dark:to-blue-800 overflow-hidden">
+      <StarBackground />
+      <div className="fixed top-0 left-0 w-full flex items-center justify-center gap-3 py-4 z-20 bg-yellow-900/40 dark:bg-blue-900/40 backdrop-blur-md shadow-md">
+        {proyectos.map((proy) => (
           <button
-            key={p.nombre}
-            onClick={() => setProyectoIdx(idx)}
-            className={`w-16 h-16 rounded-full border-4 ${
-              proyectoIdx === idx ? "border-yellow-400" : "border-transparent"
-            } overflow-hidden shadow-lg transition-all duration-200`}
+            key={proy.id}
+            onClick={() => setProyectoActual(proy)}
+            className={`w-14 h-14 rounded-full border-4 transition-all duration-200 shadow-lg overflow-hidden ring-2 ring-white/30 backdrop-blur-md ${
+              proyectoActual.id === proy.id
+                ? "border-yellow-400 scale-110 bg-yellow-900/60 dark:border-blue-400 dark:bg-blue-900/60"
+                : "border-yellow-800 opacity-70 hover:scale-105 bg-yellow-900/30 dark:border-blue-800 dark:bg-blue-900/30"
+            }`}
           >
-            <img src={p.avatar} alt={p.nombre} className="w-full h-full object-cover" />
+            <img
+              src={proy.avatar}
+              alt={proy.titulo}
+              className="object-cover w-full h-full"
+            />
           </button>
         ))}
       </div>
 
-      <div className="flex w-full max-w-5xl h-[400px] bg-white bg-opacity-10 rounded-2xl shadow-xl overflow-hidden">
-        {/* Menú izquierdo */}
-        <div className="flex flex-col justify-center items-start bg-white bg-opacity-5 px-6 py-8 min-w-[150px]">
+
+      <div className="flex flex-row items-start justify-center w-full max-w-6xl z-10 gap-8">
+        <div className="flex flex-col gap-2 min-w-[150px] mt-2 select-none">
           {opciones.map((op) => (
             <button
               key={op.key}
-              onClick={() => setOpcion(op.key)}
-              className={`mb-4 text-lg font-semibold text-left transition-colors duration-200 ${
-                opcion === op.key ? "text-yellow-400" : "text-white hover:text-yellow-300"
+              onClick={() => setOpcionActual(op.key)}
+              className={`flex items-center gap-2 px-2 py-1 rounded-lg font-semibold transition-all duration-150 focus:outline-none text-left text-yellow-900 dark:text-blue-100 text-base tracking-wide group ${
+                opcionActual === op.key
+                  ? "bg-gradient-to-r from-yellow-500 to-yellow-400 text-white shadow-lg dark:from-blue-500 dark:to-blue-400"
+                  : "hover:bg-yellow-700/80 hover:text-white dark:hover:bg-blue-700/80"
               }`}
             >
+              <span className={`w-2 h-2 rounded-full ${
+                opcionActual === op.key
+                  ? "bg-white"
+                  : "bg-yellow-400 dark:bg-blue-400"
+              }`}></span>
               {op.label}
             </button>
           ))}
         </div>
 
-        {/* Imagen central */}
-        <div className="flex-1 flex items-center justify-center">
-          <img
-            src={proyecto.imagen}
-            alt={proyecto.nombre}
-            className="rounded-3xl shadow-2xl max-h-72 object-contain border-4 border-white"
-          />
+        <div className="flex flex-col items-center justify-center flex-shrink-0">
+          <div className="w-200 h-100 bg-white rounded-[30px_80px_30px_80px/40px_30px_80px_30px] overflow-hidden shadow-xl border-4 border-yellow-300 dark:border-blue-300 relative">
+            <img
+              src={proyectoActual.imagen}
+              alt={proyectoActual.titulo}
+              className="object-cover w-full h-full"
+            />
+            <div className="absolute inset-0 pointer-events-none bg-gradient-to-tr from-white/10 to-transparent" />
+          </div>
         </div>
 
-        {/* Información derecha */}
-        <div className="flex flex-col justify-center items-start bg-white bg-opacity-5 px-8 py-8 min-w-[300px]">
-          <h2 className="text-2xl font-bold text-white mb-4">{proyecto.nombre}</h2>
-          {opcion === "detalles" && <p className="text-white/80">{proyecto.detalles}</p>}
-          {opcion === "link" && (
-            <a
-              href={proyecto.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-300 underline"
-            >
-              {proyecto.link}
-            </a>
-          )}
-          {opcion === "informacion" && <p className="text-white/80">{proyecto.informacion}</p>}
+
+        <div className="flex flex-col justify-start text-left max-w-md mt-2 min-h-[450px] min-w-[350px] h-[280px] w-[350px] overflow-auto transition-all duration-300 scrollbar-thin scrollbar-thumb-yellow-400 scrollbar-track-yellow-900/30 scrollbar-thumb-rounded-full scrollbar-track-rounded-full dark:scrollbar-thumb-blue-400 dark:scrollbar-track-blue-900/30">
+          {getContenido()}
         </div>
       </div>
     </div>

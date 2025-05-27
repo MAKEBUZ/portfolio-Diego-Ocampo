@@ -50,13 +50,13 @@ export default function Testimonials() {
   return (
     <div className="h-full w-full flex flex-col items-center justify-center bitacora-bg p-2 md:p-6">
       <div className="w-full h-full">
-        <div className="h-full overflow-y-auto testimonials-scroll grid [grid-template-columns:repeat(auto-fit,minmax(280px,1fr))] gap-6 md:gap-8 p-2 md:p-6">
+        <div className="h-full overflow-y-auto testimonials-scroll grid [grid-template-columns:repeat(auto-fit,minmax(280px,1fr))] gap-6 md:gap-8 p-2 md:p-6 [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-yellow-500/50 [&::-webkit-scrollbar-thumb]:rounded-full">
           {testimonios.map((testimonio, idx) => (
             <div
               key={idx}
               className="card-bg card-border border-4 rounded-2xl shadow-lg p-4 flex flex-col items-center justify-between transition-all duration-300 hover:scale-105 hover:shadow-2xl relative"
               style={{
-                boxShadow: '0 0 16px 2px rgba(245, 158, 11, 0.15)', // Ámbar suave
+                boxShadow: '0 0 16px 2px rgba(245, 158, 11, 0.15)', 
               }}
             >
               <h3 className="text-primary font-serif text-lg mb-2 text-center tracking-wide">
