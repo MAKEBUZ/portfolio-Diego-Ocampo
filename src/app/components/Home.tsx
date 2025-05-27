@@ -136,7 +136,6 @@ export default function Home() {
     router.push('/loading')
   }
 
-  // Estilos condicionales basados en isDarkMode
   const textColor = isDarkMode ? 'text-white' : 'text-gray-900'
   const secondaryTextColor = isDarkMode ? 'text-gray-300' : 'text-gray-700'
   const dividerColor = isDarkMode ? 'bg-white' : 'bg-gray-900'

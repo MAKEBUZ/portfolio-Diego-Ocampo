@@ -283,7 +283,7 @@ const Menu: React.FC = () => {
                 onClick={() => setTheme(false)}
                 className={`flex items-center gap-2 px-3 py-2 rounded-md ${
                   !isDarkMode 
-                    ? 'bg-blue-600 text-white' 
+                    ? 'bg-yellow-600 text-white' 
                     : 'hover:bg-gray-200 dark:hover:bg-gray-700'
                 }`}
               >
@@ -294,7 +294,7 @@ const Menu: React.FC = () => {
                 onClick={() => setTheme(true)}
                 className={`flex items-center gap-2 px-3 py-2 rounded-md ${
                   isDarkMode 
-                    ? 'bg-blue-600 text-white' 
+                    ? 'bg-yellow-600 text-white' 
                     : 'hover:bg-gray-200 dark:hover:bg-gray-700'
                 }`}
               >
