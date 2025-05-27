@@ -9,7 +9,7 @@ const proyectos = [
     titulo: "Proyecto 1",
     descripcion:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. En id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Laculis lacinia nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.",
-    imagen: "https://placehold.co/800x600/2563eb/ffffff?text=Proyecto+1",
+    imagen: "/images/proyecto1.png",
     detalles: "Estos son los detalles del Proyecto 1.",
     link: "https://proyecto1.com",
     informacion: "Información adicional sobre el Proyecto 1.",
@@ -169,7 +169,7 @@ export default function ProjectsPreview() {
         ))}
       </div>
 
-      <div className="flex flex-col md:flex-row items-center md:items-start justify-center w-full max-w-6xl z-10 gap-6 md:gap-10 px-2 md:px-0 mt-8 md:mt-0">
+      <div className="flex flex-col md:flex-row items-center md:items-center justify-center w-full max-w-6xl z-10 gap-6 md:gap-12 px-2 md:px-0 mt-8 md:mt-0">
         <div className="flex flex-row md:flex-col gap-2 min-w-[100px] w-full md:w-auto justify-center md:justify-start mb-4 md:mb-0">
           {opciones.map((op) => (
             <button
@@ -192,21 +192,21 @@ export default function ProjectsPreview() {
         </div>
 
         <div className="flex flex-col items-center justify-center flex-shrink-0 w-full md:w-auto">
-          <div className={`w-full max-w-[320px] md:max-w-[400px] aspect-[4/3] bg-white rounded-[30px_80px_30px_80px/40px_30px_80px_30px] overflow-hidden shadow-xl border-4 ${isDarkMode ? 'border-blue-300' : 'border-yellow-300'} relative`}>
-            <div className="relative w-full h-full min-h-[160px] md:min-h-[220px]">
+          <div className={`w-full max-w-[340px] aspect-[4/3] bg-white rounded-[30px_80px_30px_80px/40px_30px_80px_30px] overflow-hidden shadow-xl border-4 ${isDarkMode ? 'border-blue-300' : 'border-yellow-300'} relative p-2 md:p-6 md:w-[520px] md:h-[292px] md:max-w-none md:aspect-auto`}>
+            <div className="relative w-full h-full min-h-[180px] md:min-h-0">
               <Image
                 src={proyectoActual.imagen}
                 alt={proyectoActual.titulo}
                 fill
-                className="object-cover"
-                sizes="(max-width: 400px) 100vw, 400px"
+                className="object-cover rounded-2xl"
+                sizes="(max-width: 520px) 100vw, 520px"
               />
-              <div className="absolute inset-0 pointer-events-none bg-gradient-to-tr from-white/10 to-transparent" />
+              <div className="absolute inset-0 pointer-events-none bg-gradient-to-tr from-white/10 to-transparent rounded-2xl" />
             </div>
           </div>
         </div>
 
-        <div className={`flex flex-col justify-start text-left max-w-md mt-4 md:mt-2 min-h-[180px] min-w-[180px] h-auto w-full md:w-[350px] overflow-auto transition-all duration-300 scrollbar-thin ${isDarkMode ? 'scrollbar-thumb-blue-400 scrollbar-track-blue-900/30' : 'scrollbar-thumb-yellow-400 scrollbar-track-yellow-900/30'} scrollbar-thumb-rounded-full scrollbar-track-rounded-full bg-transparent p-4 md:p-6 rounded-xl`}>
+        <div className={`flex flex-col justify-start text-left max-w-md mt-4 md:mt-2 min-h-[180px] min-w-[180px] h-auto w-full md:w-[400px] overflow-auto transition-all duration-300 scrollbar-thin ${isDarkMode ? 'scrollbar-thumb-blue-400 scrollbar-track-blue-900/30' : 'scrollbar-thumb-yellow-400 scrollbar-track-yellow-900/30'} scrollbar-thumb-rounded-full scrollbar-track-rounded-full bg-transparent p-4 md:p-8 rounded-xl`}>
           {getContenido()}
         </div>
       </div>
