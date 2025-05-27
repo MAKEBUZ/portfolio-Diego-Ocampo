@@ -36,7 +36,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ title, icon, href, onClick }) => {
       className="flex items-center justify-center flex-col p-4 bg-menu-item text-white hover:bg-menu-item-hover transition-all w-full aspect-square rounded-md"
       onClick={onClick}
     >
-      <div className="mb-2">{icon}</div>
+      <section className="mb-2">{icon}</section>
       <span className="text-xl font-medium text-center">{title}</span>
     </Link>
   );
@@ -121,19 +121,19 @@ const Menu: React.FC = () => {
 
   if (!isMounted) {
     return (
-      <div className={`min-h-screen relative overflow-hidden z-50 ${isDarkMode ? 'dark:bg-darker' : 'bg-lighter'} transition-colors duration-300`}>
+      <section className={`min-h-screen relative overflow-hidden z-50 ${isDarkMode ? 'dark:bg-darker' : 'bg-lighter'} transition-colors duration-300`}>
         <button
           className="fixed left-4 top-4 z-50 p-3 rounded-full shadow-lg bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm border border-gray-200 dark:border-gray-600"
           aria-label="Toggle menu"
         >
           <Grid size={24} className="text-gray-800 dark:text-white" />
         </button>
-      </div>
+      </section>
     );
   }
 
   return (
-    <div className={`min-h-screen relative overflow-hidden z-50 ${isDarkMode ? 'dark:bg-darker' : 'bg-lighter'} transition-colors duration-300`}>
+    <section className={`min-h-screen relative overflow-hidden z-50 ${isDarkMode ? 'dark:bg-darker' : 'bg-lighter'} transition-colors duration-300`}>
       <motion.button
         onClick={toggleMenu}
         className="fixed left-1.5 top-2 z-50 p-3 rounded-full shadow-lg bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm border border-gray-200 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all"
@@ -151,7 +151,7 @@ const Menu: React.FC = () => {
       <AnimatePresence>
         {isMenuOpen && (
           <>
-            <motion.div
+            <motion.section
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -160,44 +160,44 @@ const Menu: React.FC = () => {
               onClick={closeMenu}
             />
             
-            <div className="fixed inset-0 z-40 flex overflow-hidden">
-              <motion.div
+            <section className="fixed inset-0 z-40 flex overflow-hidden">
+              <motion.section
                 initial={{ x: -64 }}
                 animate={{ x: 0 }}
                 exit={{ x: -64 }}
                 transition={{ duration: 0.3, ease: "easeOut" }}
                 className="h-full bg-sidebar w-16 flex flex-col justify-between py-6"
               >
-                <div className="flex flex-col items-center gap-6">
+                <section className="flex flex-col items-center gap-6">
                   <SidebarItem 
                     icon={
-                      <motion.div 
+                      <motion.section 
                         whileHover={{ rotate: 30 }}
                         className="relative top-15"
                       >
                         <Clock size={24} className={isDarkMode ? "text-gray-300" : "text-yellow-300"} />
-                        <div className={`absolute -top-1 -right-1 w-3 h-3 rounded-full border-2 border-white ${
+                        <section className={`absolute -top-1 -right-1 w-3 h-3 rounded-full border-2 border-white ${
                           isDarkMode ? 'bg-gray-400' : 'bg-yellow-400'
-                        }`}></div>
-                      </motion.div>
+                        }`}></section>
+                      </motion.section>
                     } 
                     ariaLabel="Toggle theme" 
                     onClick={toggleThemeSelector} 
                   />
-                </div>
+                </section>
                 
-                <div className="flex flex-col items-center gap-6">
+                <section className="flex flex-col items-center gap-6">
                   <SidebarItem icon={<Github size={24} />} href="https://github.com" ariaLabel="GitHub" />
                   <SidebarItem icon={<Linkedin size={24} />} href="https://linkedin.com" ariaLabel="LinkedIn" />
                   <SidebarItem icon={<Mail size={24} />} href="mailto:contact@example.com" ariaLabel="Contact" />
-                </div>
+                </section>
                 
-                <div className="flex flex-col items-center">
+                <section className="flex flex-col items-center">
                   <SidebarItem icon={<Home size={24} />} href="/" ariaLabel="Home" />
-                </div>
-              </motion.div>
+                </section>
+              </motion.section>
 
-              <motion.div
+              <motion.section
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
@@ -205,9 +205,9 @@ const Menu: React.FC = () => {
                 className="h-full bg-sidebar flex-1 overflow-y-auto bg-menu-gradient"
                 style={{ maxWidth: '420px' }}
               >
-                <div className="bg-profile-banner p-8 relative">
-                  <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-start">
-                    <div className="relative w-24 h-24 rounded-full overflow-hidden border-4 border-profile bg-white">
+                <section className="bg-profile-banner p-8 relative">
+                  <section className="flex flex-col sm:flex-row items-center justify-center sm:justify-start">
+                    <section className="relative w-24 h-24 rounded-full overflow-hidden border-4 border-profile bg-white">
                       <Image 
                         src="/avatar.jpg" 
                         alt="Profile" 
@@ -215,16 +215,16 @@ const Menu: React.FC = () => {
                         className="object-cover"
                         priority
                       />
-                    </div>
-                    <div className="sm:ml-6 mt-4 sm:mt-0 text-center sm:text-left">
+                    </section>
+                    <section className="sm:ml-6 mt-4 sm:mt-0 text-center sm:text-left">
                       <h1 className="text-xl font-semibold text-profile-primary">Diego Alejandro Ocampo</h1>
                       <p className="text-sm text-profile-secondary">Desarrollador Full Stack</p>
-                    </div>
-                  </div>
-                </div>
+                    </section>
+                  </section>
+                </section>
 
-                <div className="p-4">
-                  <div className="grid grid-cols-2 gap-3">
+                <section className="p-4">
+                  <section className="grid grid-cols-2 gap-3">
                     <MenuItem 
                       title="Perfil" 
                       icon={<User size={48} />} 
@@ -255,30 +255,24 @@ const Menu: React.FC = () => {
                       href="#"
                       onClick={() => navigateToPortfolio('pasatiempos')}
                     />
-                    <MenuItem 
-                      title="Información" 
-                      icon={<Info size={48} />} 
-                      href="/information" 
-                      onClick={closeMenu}
-                    />
-                  </div>
-                </div>
-              </motion.div>
-            </div>
+                  </section>
+                </section>
+              </motion.section>
+            </section>
           </>
         )}
       </AnimatePresence>
 
       <AnimatePresence>
         {showThemeSelector && isMounted && (
-          <motion.div
+          <motion.section
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.2 }}
             className="fixed left-20 top-20 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-3 z-50 border border-gray-200 dark:border-gray-600"
           >
-            <div className="flex flex-col gap-2">
+            <section className="flex flex-col gap-2">
               <button 
                 onClick={() => setTheme(false)}
                 className={`flex items-center gap-2 px-3 py-2 rounded-md ${
@@ -301,11 +295,11 @@ const Menu: React.FC = () => {
                 <Moon size={18} />
                 <span>Dark</span>
               </button>
-            </div>
-          </motion.div>
+            </section>
+          </motion.section>
         )}
       </AnimatePresence>
-    </div>
+    </section>
   );
 };
 

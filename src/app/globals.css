@@ -10,67 +10,63 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 :root {
-  /* Existing color scheme in HSL */
-  --sidebar-color: 268, 15%, 28%;        /* #463C51 - Barra lateral */
-  --sidebar-hover: 263, 15%, 35%;        /* Hover barra lateral */
-  --profile-banner: 10, 20%, 50%;        /* #9F8380 - Banner de perfil */
-  --menu-gradient-start: 33, 41%, 89%;   /* #EDE4D8 - Inicio gradiente */
-  --menu-gradient-end: 10, 20%, 60%;     /* #9F8380 - Fin gradiente */
-  --menu-item: 220, 15%, 40%;           /* #50596B - Elementos grilla */
-  --menu-item-hover: 220, 15%, 35%;     /* Hover elementos */
-  --border-profile: 33, 41%, 89%;       /* #EDE4D8 - Borde imagen */
-  --text-primary: 0, 0%, 20%;           /* Texto principal light mode */
-  --text-secondary: 0, 0%, 40%;         /* Texto secundario light mode */
-  --bg-primary: 40, 38%, 95%;           /* Fondo principal light mode */
+  --sidebar-color: 268, 15%, 28%;        
+  --sidebar-hover: 263, 15%, 35%;        
+  --profile-banner: 10, 20%, 50%;        
+  --menu-gradient-start: 33, 41%, 89%;   
+  --menu-gradient-end: 10, 20%, 60%;     
+  --menu-item: 220, 15%, 40%;           
+  --menu-item-hover: 220, 15%, 35%;     
+  --border-profile: 33, 41%, 89%;       
+  --text-primary: 0, 0%, 20%;           
+  --text-secondary: 0, 0%, 40%;         
+  --bg-primary: 40, 38%, 95%;           
 
-  /* New Bitácora color scheme */
-  --color-primary: 215, 16%, 38%;       /* #4b5563 - Fondo general gris */
-  --color-book-bg: 45, 100%, 95%;       /* #fff8e6 - Fondo del libro */
-  --color-book-edge: 30, 46%, 36%;      /* #7c552e - Borde del libro */
-  --color-tab-sobre-mi: 88, 77%, 44%;   /* #65a30d - Verde */
-  --color-tab-cv: 271, 81%, 60%;        /* #9333ea - Morado */
-  --color-tab-pasatiempos: 217, 91%, 60%; /* #3b82f6 - Azul */
-  --color-tab-placeholder: 220, 13%, 46%; /* #6b7280 - Gris */
-  --color-accent: 38, 92%, 50%;         /* #f59e0b - Ámbar */
-  --color-accent-light: 48, 96%, 89%;   /* #fef3c7 - Ámbar claro */
-  --color-avatar-border: 38, 92%, 50%;  /* #f59e0b */
-  --color-avatar-border-inactive: 220, 14%, 84%; /* #d1d5db */
-  --color-card-bg: 45, 100%, 95%;       /* #fff8e6 */
-  --color-card-border: 48, 96%, 89%;    /* #fde68a */
-  --color-button-bg: 217, 33%, 17%;     /* #1f2937 */
-  --color-button-hover: 216, 19%, 27%;  /* #374151 */
+  --color-primary: 215, 16%, 38%;       
+  --color-book-bg: 45, 100%, 95%;       
+  --color-book-edge: 30, 46%, 36%;      
+  --color-tab-sobre-mi: 88, 77%, 44%;   
+  --color-tab-cv: 271, 81%, 60%;        
+  --color-tab-pasatiempos: 217, 91%, 60%; 
+  --color-tab-placeholder: 220, 13%, 46%; 
+  --color-accent: 38, 92%, 50%;         
+  --color-accent-light: 48, 96%, 89%;   
+  --color-avatar-border: 38, 92%, 50%;  
+  --color-avatar-border-inactive: 220, 14%, 84%; 
+  --color-card-bg: 45, 100%, 95%;       
+  --color-card-border: 48, 96%, 89%;    
+  --color-button-bg: 217, 33%, 17%;     
+  --color-button-hover: 216, 19%, 27%;  
 }
 
 .dark {
-  /* Existing dark mode overrides */
-  --sidebar-color: 268, 15%, 18%;        /* Barra lateral oscura */
-  --sidebar-hover: 263, 15%, 25%;        /* Hover barra lateral oscura */
-  --profile-banner: 10, 20%, 30%;        /* Banner de perfil oscuro */
-  --menu-gradient-start: 220, 41%, 15%;  /* Inicio gradiente oscuro */
-  --menu-gradient-end: 220, 41%, 10%;    /* Fin gradiente oscuro */
-  --menu-item: 220, 15%, 25%;           /* Elementos grilla oscuros */
-  --menu-item-hover: 220, 15%, 20%;     /* Hover elementos oscuros */
-  --border-profile: 220, 15%, 30%;      /* Borde imagen oscuro */
-  --text-primary: 0, 0%, 95%;           /* Texto principal dark mode */
-  --text-secondary: 0, 0%, 85%;         /* Texto secundario dark mode */
-  --bg-primary: 220, 41%, 10%;          /* Fondo principal dark mode */
+  --sidebar-color: 268, 15%, 18%;        
+  --sidebar-hover: 263, 15%, 25%;       
+  --profile-banner: 10, 20%, 30%;        
+  --menu-gradient-start: 220, 41%, 15%;  
+  --menu-gradient-end: 220, 41%, 10%;   
+  --menu-item: 220, 15%, 25%;          
+  --menu-item-hover: 220, 15%, 20%;     
+  --border-profile: 220, 15%, 30%;      
+  --text-primary: 0, 0%, 95%;           
+  --text-secondary: 0, 0%, 85%;        
+  --bg-primary: 220, 41%, 10%;         
 
-  /* New Bitácora dark mode overrides */
-  --color-primary: 220, 41%, 10%;       /* Fondo oscuro */
-  --color-book-bg: 30, 7%, 14%;         /* #252220 - Fondo libro oscuro */
-  --color-book-edge: 30, 7%, 24%;       /* Borde libro oscuro */
-  --color-tab-sobre-mi: 88, 77%, 34%;   /* Verde más oscuro */
-  --color-tab-cv: 271, 81%, 50%;        /* Morado más oscuro */
-  --color-tab-pasatiempos: 217, 91%, 50%; /* Azul más oscuro */
-  --color-tab-placeholder: 220, 13%, 36%; /* Gris más oscuro */
-  --color-accent: 38, 92%, 40%;         /* Ámbar más oscuro */
-  --color-accent-light: 48, 96%, 20%;   /* Ámbar claro oscuro */
-  --color-avatar-border: 38, 92%, 40%;  /* Ámbar oscuro */
-  --color-avatar-border-inactive: 220, 14%, 44%; /* Gris oscuro */
-  --color-card-bg: 30, 7%, 14%;         /* Fondo tarjeta oscuro */
-  --color-card-border: 48, 96%, 20%;    /* Borde tarjeta oscuro */
-  --color-button-bg: 0, 0%, 95%;       /* Botón claro */
-  --color-button-hover: 0, 0%, 85%;     /* Botón hover claro */
+  --color-primary: 220, 41%, 10%;       
+  --color-book-bg: 30, 7%, 14%;         
+  --color-book-edge: 30, 7%, 24%;       
+  --color-tab-sobre-mi: 88, 77%, 34%;   
+  --color-tab-cv: 271, 81%, 50%;        
+  --color-tab-pasatiempos: 217, 91%, 50%; 
+  --color-tab-placeholder: 220, 13%, 36%; 
+  --color-accent: 38, 92%, 40%;         
+  --color-accent-light: 48, 96%, 20%;   
+  --color-avatar-border: 38, 92%, 40%;  
+  --color-avatar-border-inactive: 220, 14%, 44%; 
+  --color-card-bg: 30, 7%, 14%;         
+  --color-card-border: 48, 96%, 20%;    
+  --color-button-bg: 0, 0%, 95%;       
+  --color-button-hover: 0, 0%, 85%;     
 }
 
 @layer utilities {

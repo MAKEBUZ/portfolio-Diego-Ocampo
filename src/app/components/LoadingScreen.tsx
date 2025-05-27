@@ -14,13 +14,12 @@ export default function LoadingScreen() {
   const [isDarkMode, setIsDarkMode] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
 
-  // Detectar y manejar cambios de tema
   useEffect(() => {
     const checkDarkMode = () => {
       setIsDarkMode(document.documentElement.classList.contains('dark'))
     }
     
-    checkDarkMode() // Verificar estado inicial
+    checkDarkMode() 
     
     const observer = new MutationObserver(checkDarkMode)
     observer.observe(document.documentElement, {
@@ -31,14 +30,12 @@ export default function LoadingScreen() {
     return () => observer.disconnect()
   }, [])
 
-  // Efecto para medir el ancho del contenedor
   useEffect(() => {
     if (containerRef.current) {
       setContainerWidth(containerRef.current.offsetWidth)
     }
   }, [])
 
-  // Animación de progreso
   useEffect(() => {
     const timer = setInterval(() => {
       setProgress((prevProgress) => {
@@ -64,7 +61,6 @@ export default function LoadingScreen() {
     { name: 'Next.js', icon: <SiNextdotjs size={64} /> },
   ]
 
-  // Sistema de colores dinámico
   const getThemeColors = () => {
     return {
       bgPrimary: isDarkMode ? 'bg-gray-900' : 'bg-gray-50',
@@ -84,27 +80,26 @@ export default function LoadingScreen() {
   const colors = getThemeColors()
 
   return (
-    <motion.div
+    <motion.section
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3 }}
       className={`flex flex-col items-center justify-center min-h-screen ${colors.bgPrimary} transition-colors duration-300`}
     >
-      {/* Fondo con gradiente dinámico */}
-      <div className={`absolute inset-0 overflow-hidden opacity-30 bg-gradient-to-br ${colors.gradientBg}`} />
+      <section className={`absolute inset-0 overflow-hidden opacity-30 bg-gradient-to-br ${colors.gradientBg}`} />
       
-      <div className="z-10 flex flex-col items-center w-full max-w-4xl px-4">
+      <section className="z-10 flex flex-col items-center w-full max-w-4xl px-4">
         <h1 className={`mb-8 text-3xl font-bold ${colors.textPrimary}`}>
           Cargando aplicación
         </h1>
         
-        <div 
+        <section 
           ref={containerRef}
           className="flex flex-wrap justify-center gap-6 mb-8 w-full"
         >
           {technologies.map((tech, index) => (
-            <motion.div
+            <motion.section
               key={tech.name}
               initial={{ opacity: 0, y: 10 }}
               animate={{ 
@@ -114,31 +109,30 @@ export default function LoadingScreen() {
               transition={{ duration: 0.2, delay: index * 0.05 }}
               className={`flex flex-col items-center p-4 ${colors.bgSecondary} rounded-lg shadow-sm`}
             >
-              <div className={progress > index * 16 ? colors.iconActive : colors.iconInactive}>
+              <section className={progress > index * 16 ? colors.iconActive : colors.iconInactive}>
                 {tech.icon}
-              </div>
+              </section>
               <span className={`text-sm font-medium mt-1 ${progress > index * 16 ? colors.textPrimary : colors.textSecondary}`}>
                 {tech.name}
               </span>
-            </motion.div>
+            </motion.section>
           ))}
-        </div>
+        </section>
         
-        {/* Barra de progreso */}
-        <div 
+        <section 
           className={`h-1.5 mb-3 overflow-hidden rounded-full ${colors.progressBg}`}
           style={{ width: containerWidth || '100%' }}
         >
-          <div 
+          <section 
             className={`h-full bg-gradient-to-r ${colors.progressFill} rounded-full transition-all duration-75 ease-linear`}
             style={{ width: `${progress}%` }}
           />
-        </div>
+        </section>
         
-        <div className={`text-sm ${colors.textSecondary}`}>
+        <section className={`text-sm ${colors.textSecondary}`}>
           {progress < 100 ? `Cargando... ${progress}%` : '¡Redirigiendo al portfolio!'}
-        </div>
-      </div>
-    </motion.div>
+        </section>
+      </section>
+    </motion.section>
   )
 }

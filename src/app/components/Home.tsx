@@ -12,7 +12,6 @@ export default function Home() {
   const [isMounted, setIsMounted] = useState(false)
   const [isDarkMode, setIsDarkMode] = useState(false)
 
-  // Manejo del tema oscuro
   useEffect(() => {
     setIsMounted(true)
     const savedTheme = localStorage.getItem('theme')
@@ -28,7 +27,6 @@ export default function Home() {
     }
   }, [isDarkMode, isMounted])
 
-  // ThreeJS Gusano setup con tema
   useEffect(() => {
     if (!containerRef.current || !isMounted) return
 
@@ -38,13 +36,12 @@ export default function Home() {
 
     const renderer = new THREE.WebGLRenderer({ antialias: true })
     renderer.setSize(window.innerWidth, window.innerHeight)
-    renderer.setClearColor(isDarkMode ? 0x111111 : 0xf8f8f8) // Fondo oscuro/claro
+    renderer.setClearColor(isDarkMode ? 0x111111 : 0xf8f8f8) 
     containerRef.current.appendChild(renderer.domElement)
     renderer.domElement.classList.add('absolute', 'top-0', 'left-0', 'z-0')
 
-    // Configuración del material con tema
-    const wireColor = isDarkMode ? 0xffffff : 0x333333 // Líneas blancas/negras
-    const baseColor = isDarkMode ? 0x111111 : 0xf8f8f8 // Fondo oscuro/claro
+    const wireColor = isDarkMode ? 0xffffff : 0x333333 
+    const baseColor = isDarkMode ? 0x111111 : 0xf8f8f8 
 
     const uniforms = {
       uTime: { value: 0.0 },
@@ -93,7 +90,6 @@ export default function Home() {
     const tube = new THREE.Mesh(geometry, wireframeMaterial)
     scene.add(tube)
 
-    // Animación
     const percentage = { value: 0 }
     gsap.to(percentage, {
       value: 1,
@@ -138,15 +134,14 @@ export default function Home() {
 
   const textColor = isDarkMode ? 'text-white' : 'text-gray-900'
   const secondaryTextColor = isDarkMode ? 'text-gray-300' : 'text-gray-700'
-  const dividerColor = isDarkMode ? 'bg-white' : 'bg-gray-900'
+  const sectioniderColor = isDarkMode ? 'bg-white' : 'bg-gray-900'
   const buttonStyles = isDarkMode 
     ? 'bg-white text-gray-800 hover:bg-gray-100' 
     : 'bg-gray-800 text-white hover:bg-gray-700'
 
   return (
-    <div ref={containerRef} className="relative w-full h-screen overflow-hidden">
-      {/* Contenido principal */}
-      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center">
+    <section ref={containerRef} className="relative w-full h-screen overflow-hidden">
+      <section className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center">
         <motion.h1
           className={`mb-4 text-4xl font-bold tracking-wider ${textColor} md:text-5xl lg:text-6xl`}
           initial={{ opacity: 0, y: -20 }}
@@ -165,24 +160,24 @@ export default function Home() {
           MADROÑERO
         </motion.h2>
 
-        <motion.div
+        <motion.section
           className="mb-10 w-full max-w-xl"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.4, ease: "backOut" }}
         >
-          <div className="flex flex-col items-center space-y-1">
+          <section className="flex flex-col items-center space-y-1">
             <span className={`text-5xl font-medium ${textColor}`}>쓰</span>
-            <div className="flex items-center w-full px-4">
-              <div className={`h-0.5 flex-1 ${dividerColor}`}></div> 
-              <div className="w-8"></div>
-              <div className={`h-0.5 flex-1 ${dividerColor}`}></div>
-            </div>
+            <section className="flex items-center w-full px-4">
+              <section className={`h-0.5 flex-1 ${sectioniderColor}`}></section> 
+              <section className="w-8"></section>
+              <section className={`h-0.5 flex-1 ${sectioniderColor}`}></section>
+            </section>
             <span className={`text-5xl font-medium ${textColor} transform scale-y-[-1]`}>쓰</span>
-          </div>
-        </motion.div>
+          </section>
+        </motion.section>
 
-        <motion.div
+        <motion.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.6, ease: "easeOut" }}
@@ -193,8 +188,8 @@ export default function Home() {
           >
             Click To Start
           </button>
-        </motion.div>
-      </div>
-    </div>
+        </motion.section>
+      </section>
+    </section>
   )
 }

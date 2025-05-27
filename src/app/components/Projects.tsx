@@ -55,9 +55,9 @@ function StarBackground() {
   }, []);
 
   return (
-    <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
+    <section className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
       {stars.map((star, i) => (
-        <div
+        <section
           key={i}
           className="absolute rounded-full bg-white opacity-30 animate-pulse"
           style={{
@@ -69,7 +69,7 @@ function StarBackground() {
           }}
         />
       ))}
-    </div>
+    </section>
   );
 }
 
@@ -83,7 +83,7 @@ export default function ProjectsPreview() {
       setIsDarkMode(document.documentElement.classList.contains('dark'));
     };
     
-    checkDarkMode(); // Verificar estado inicial
+    checkDarkMode();
     
     const observer = new MutationObserver(checkDarkMode);
     observer.observe(document.documentElement, {
@@ -143,9 +143,9 @@ export default function ProjectsPreview() {
   };
 
   return (
-    <div className={`relative w-screen h-screen min-h-screen min-w-full flex flex-col items-center justify-center ${isDarkMode ? 'bg-gradient-to-br from-blue-950 to-blue-800' : 'bg-gradient-to-br from-yellow-950 to-yellow-800'} overflow-hidden`}>
+    <section className={`relative w-screen h-screen min-h-screen min-w-full flex flex-col items-center justify-center ${isDarkMode ? 'bg-gradient-to-br from-blue-950 to-blue-800' : 'bg-gradient-to-br from-yellow-950 to-yellow-800'} overflow-hidden`}>
       <StarBackground />
-      <div className={`fixed top-0 left-0 w-full flex items-center justify-center gap-3 py-4 z-20 ${isDarkMode ? 'bg-blue-900/40' : 'bg-yellow-900/40'} backdrop-blur-md shadow-md`}>
+      <section className={`fixed top-0 left-0 w-full flex items-center justify-center gap-3 py-4 z-20 ${isDarkMode ? 'bg-blue-900/40' : 'bg-yellow-900/40'} backdrop-blur-md shadow-md`}>
         {proyectos.map((proy) => (
           <button
             key={proy.id}
@@ -156,7 +156,7 @@ export default function ProjectsPreview() {
                 : `${isDarkMode ? 'border-blue-800 bg-blue-900/30' : 'border-yellow-800 bg-yellow-900/30'} opacity-70 hover:scale-105`
             }`}
           >
-            <div className="relative w-full h-full">
+            <section className="relative w-full h-full">
               <Image
                 src={proy.avatar}
                 alt={proy.titulo}
@@ -164,13 +164,13 @@ export default function ProjectsPreview() {
                 className="object-cover"
                 sizes="(max-width: 56px) 100vw, 56px"
               />
-            </div>
+            </section>
           </button>
         ))}
-      </div>
+      </section>
 
-      <div className="flex flex-col md:flex-row items-center md:items-center justify-center w-full max-w-6xl z-10 gap-6 md:gap-12 px-2 md:px-0 mt-8 md:mt-0">
-        <div className="flex flex-row md:flex-col gap-2 min-w-[100px] w-full md:w-auto justify-center md:justify-start mb-4 md:mb-0">
+      <section className="flex flex-col md:flex-row items-center md:items-center justify-center w-full max-w-6xl z-10 gap-6 md:gap-12 px-2 md:px-0 mt-8 md:mt-0">
+        <section className="flex flex-row md:flex-col gap-2 min-w-[100px] w-full md:w-auto justify-center md:justify-start mb-4 md:mb-0">
           {opciones.map((op) => (
             <button
               key={op.key}
@@ -189,11 +189,11 @@ export default function ProjectsPreview() {
               {op.label}
             </button>
           ))}
-        </div>
+        </section>
 
-        <div className="flex flex-col items-center justify-center flex-shrink-0 w-full md:w-auto">
-          <div className={`w-full max-w-[340px] aspect-[4/3] bg-white rounded-[30px_80px_30px_80px/40px_30px_80px_30px] overflow-hidden shadow-xl border-4 ${isDarkMode ? 'border-blue-300' : 'border-yellow-300'} relative md:w-[520px] md:h-[292px] md:max-w-none md:aspect-auto`}>
-            <div className="relative w-full h-full min-h-[180px] md:min-h-0">
+        <section className="flex flex-col items-center justify-center flex-shrink-0 w-full md:w-auto">
+          <section className={`w-full max-w-[340px] aspect-[4/3] bg-white rounded-[30px_80px_30px_80px/40px_30px_80px_30px] overflow-hidden shadow-xl border-4 ${isDarkMode ? 'border-blue-300' : 'border-yellow-300'} relative md:w-[520px] md:h-[292px] md:max-w-none md:aspect-auto`}>
+            <section className="relative w-full h-full min-h-[180px] md:min-h-0">
               <Image
                 src={proyectoActual.imagen}
                 alt={proyectoActual.titulo}
@@ -201,15 +201,15 @@ export default function ProjectsPreview() {
                 className="object-cover w-full h-full rounded-[30px_80px_30px_80px/40px_30px_80px_30px]"
                 sizes="(max-width: 520px) 100vw, 520px"
               />
-              <div className="absolute inset-0 pointer-events-none bg-gradient-to-tr from-white/10 to-transparent rounded-[30px_80px_30px_80px/40px_30px_80px_30px]" />
-            </div>
-          </div>
-        </div>
+              <section className="absolute inset-0 pointer-events-none bg-gradient-to-tr from-white/10 to-transparent rounded-[30px_80px_30px_80px/40px_30px_80px_30px]" />
+            </section>
+          </section>
+        </section>
 
-        <div className={`flex flex-col justify-start text-left max-w-md mt-4 md:mt-2 min-h-[180px] min-w-[180px] h-auto w-full md:w-[400px] overflow-auto transition-all duration-300 scrollbar-thin ${isDarkMode ? 'scrollbar-thumb-blue-400 scrollbar-track-blue-900/30' : 'scrollbar-thumb-yellow-400 scrollbar-track-yellow-900/30'} scrollbar-thumb-rounded-full scrollbar-track-rounded-full bg-transparent p-4 md:p-8 rounded-xl`}>
+        <section className={`flex flex-col justify-start text-left max-w-md mt-4 md:mt-2 min-h-[180px] min-w-[180px] h-auto w-full md:w-[400px] overflow-auto transition-all duration-300 scrollbar-thin ${isDarkMode ? 'scrollbar-thumb-blue-400 scrollbar-track-blue-900/30' : 'scrollbar-thumb-yellow-400 scrollbar-track-yellow-900/30'} scrollbar-thumb-rounded-full scrollbar-track-rounded-full bg-transparent p-4 md:p-8 rounded-xl`}>
           {getContenido()}
-        </div>
-      </div>
-    </div>
+        </section>
+      </section>
+    </section>
   );
 }
