@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 
 const proyectos = [
   {
@@ -8,22 +9,22 @@ const proyectos = [
     titulo: "Proyecto 1",
     descripcion:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. En id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Laculis lacinia nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.",
-    imagen: "https://i.imgur.com/4M34hi2.png",
+    imagen: "https://placehold.co/800x600/2563eb/ffffff?text=Proyecto+1",
     detalles: "Estos son los detalles del Proyecto 1.",
     link: "https://proyecto1.com",
     informacion: "Información adicional sobre el Proyecto 1.",
-    avatar: "https://i.imgur.com/4M34hi2.png",
+    avatar: "https://placehold.co/200x200/2563eb/ffffff?text=P1",
   },
   {
     id: 2,
     titulo: "Proyecto 2",
     descripcion:
       "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    imagen: "https://i.imgur.com/2nCt3Sbl.jpg",
+    imagen: "https://placehold.co/800x600/2563eb/ffffff?text=Proyecto+2",
     detalles: "Estos son los detalles del Proyecto 2.",
     link: "https://proyecto2.com",
     informacion: "Información adicional sobre el Proyecto 2.",
-    avatar: "https://i.imgur.com/2nCt3Sbl.jpg",
+    avatar: "https://placehold.co/200x200/2563eb/ffffff?text=P2",
   },
 ];
 
@@ -76,10 +77,8 @@ export default function ProjectsPreview() {
   const [proyectoActual, setProyectoActual] = useState(proyectos[0]);
   const [opcionActual, setOpcionActual] = useState("detalles");
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    setIsMounted(true);
     const checkDarkMode = () => {
       setIsDarkMode(document.documentElement.classList.contains('dark'));
     };
@@ -157,11 +156,15 @@ export default function ProjectsPreview() {
                 : `${isDarkMode ? 'border-blue-800 bg-blue-900/30' : 'border-yellow-800 bg-yellow-900/30'} opacity-70 hover:scale-105`
             }`}
           >
-            <img
-              src={proy.avatar}
-              alt={proy.titulo}
-              className="object-cover w-full h-full"
-            />
+            <div className="relative w-full h-full">
+              <Image
+                src={proy.avatar}
+                alt={proy.titulo}
+                fill
+                className="object-cover"
+                sizes="(max-width: 56px) 100vw, 56px"
+              />
+            </div>
           </button>
         ))}
       </div>
@@ -190,12 +193,16 @@ export default function ProjectsPreview() {
 
         <div className="flex flex-col items-center justify-center flex-shrink-0">
           <div className={`w-200 h-100 bg-white rounded-[30px_80px_30px_80px/40px_30px_80px_30px] overflow-hidden shadow-xl border-4 ${isDarkMode ? 'border-blue-300' : 'border-yellow-300'} relative`}>
-            <img
-              src={proyectoActual.imagen}
-              alt={proyectoActual.titulo}
-              className="object-cover w-full h-full"
-            />
-            <div className="absolute inset-0 pointer-events-none bg-gradient-to-tr from-white/10 to-transparent" />
+            <div className="relative w-full h-full">
+              <Image
+                src={proyectoActual.imagen}
+                alt={proyectoActual.titulo}
+                fill
+                className="object-cover"
+                sizes="(max-width: 800px) 100vw, 800px"
+              />
+              <div className="absolute inset-0 pointer-events-none bg-gradient-to-tr from-white/10 to-transparent" />
+            </div>
           </div>
         </div>
 
