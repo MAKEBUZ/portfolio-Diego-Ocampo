@@ -192,16 +192,16 @@ export default function ProjectsPreview() {
         </div>
 
         <div className="flex flex-col items-center justify-center flex-shrink-0 w-full md:w-auto">
-          <div className={`w-full max-w-[340px] aspect-[4/3] bg-white rounded-[30px_80px_30px_80px/40px_30px_80px_30px] overflow-hidden shadow-xl border-4 ${isDarkMode ? 'border-blue-300' : 'border-yellow-300'} relative p-2 md:p-6 md:w-[520px] md:h-[292px] md:max-w-none md:aspect-auto`}>
+          <div className={`w-full max-w-[340px] aspect-[4/3] bg-white rounded-[30px_80px_30px_80px/40px_30px_80px_30px] overflow-hidden shadow-xl border-4 ${isDarkMode ? 'border-blue-300' : 'border-yellow-300'} relative md:w-[520px] md:h-[292px] md:max-w-none md:aspect-auto`}>
             <div className="relative w-full h-full min-h-[180px] md:min-h-0">
               <Image
                 src={proyectoActual.imagen}
                 alt={proyectoActual.titulo}
                 fill
-                className="object-cover rounded-2xl"
+                className="object-cover w-full h-full rounded-[30px_80px_30px_80px/40px_30px_80px_30px]"
                 sizes="(max-width: 520px) 100vw, 520px"
               />
-              <div className="absolute inset-0 pointer-events-none bg-gradient-to-tr from-white/10 to-transparent rounded-2xl" />
+              <div className="absolute inset-0 pointer-events-none bg-gradient-to-tr from-white/10 to-transparent rounded-[30px_80px_30px_80px/40px_30px_80px_30px]" />
             </div>
           </div>
         </div>
