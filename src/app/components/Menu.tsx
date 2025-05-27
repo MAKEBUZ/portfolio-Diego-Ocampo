@@ -7,7 +7,6 @@ import {
   User, 
   Users, 
   FolderKanban, 
-  Info, 
   X,
   Github,
   Linkedin,

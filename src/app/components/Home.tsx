@@ -119,11 +119,13 @@ export default function Home() {
 
     window.addEventListener("resize", handleResize)
 
+    // Guardar el valor actual del contenedor para el cleanup
+    const cleanupContainer = containerRef.current;
+
     return () => {
       window.removeEventListener("resize", handleResize)
-      const container = containerRef.current
-      if (container && renderer.domElement.parentNode === container) {
-          container.removeChild(renderer.domElement)
+      if (cleanupContainer && renderer.domElement.parentNode === cleanupContainer) {
+          cleanupContainer.removeChild(renderer.domElement)
       }
     }
   }, [isDarkMode, isMounted])
