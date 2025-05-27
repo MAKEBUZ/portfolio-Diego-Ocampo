@@ -124,24 +124,44 @@ export default function Bitacora() {
 
   const hobbies = [
     { 
-      title: 'Aventuras', 
+      title: 'Lectura', 
       image: '/api/placeholder/200/150', 
-      description: 'Exploro lugares desconocidos, desde montañas hasta cuevas submarinas. Me encanta la adrenalina y descubrir lo inexplorado.' 
-    },
-    { 
-      title: 'Cartografía', 
-      image: '/api/placeholder/200/150', 
-      description: 'Dibujo mapas detallados de los lugares que visito. Cada mapa cuenta una historia única de descubrimiento.' 
-    },
-    { 
-      title: 'Colección', 
-      image: '/api/placeholder/200/150', 
-      description: 'Colecciono artefactos antiguos y objetos peculiares de mis viajes. Cada objeto tiene una historia fascinante detrás.' 
+      description: 'Me encanta leer, sobre todo Novelas y Manwhas Coreanos, Novelas y Manhuas Chinos y Novelas y Mangas Japoneses, me gusta mucho el romance, la acción y el drama.' 
     },
     { 
       title: 'Fotografía', 
       image: '/api/placeholder/200/150', 
-      description: 'Capturo momentos únicos en mis viajes. Las fotografías son ventanas a recuerdos inolvidables.' 
+      description: 'Me encanta la fotografia, sobre todo la fotografia de paisajes y la fotografia de retrato, me fascina la fotografia nocturna y sobre todo del extenso mar de nubes' 
+    },
+    { 
+      title: 'Colección de Mangas, Figuras y Albunes', 
+      image: '/api/placeholder/200/150', 
+      description: 'Me encanta coleccionar figuras de anime, mangas, videojuegos y albunes de musica, me encanta ver los detalles de cada figura y manga, y escuchar la musica de los albunes de musica.' 
+    },
+    { 
+      title: 'Videojuegos', 
+      image: '/api/placeholder/200/150', 
+      description: 'Los videojuegos son una de las cosas que mas me gustan, me encanta jugar a los videojuegos y sobre todo a los videojuegos RPG y sus derivados, me encanta sobre todo el estilo de juegos anime. Tambies los juegos de deportes como MotoGP, Formula 1 y Rocket League' 
+    },
+    { 
+      title: 'Musica', 
+      image: '/api/placeholder/200/150', 
+      description: 'Me encanta la musica y sobre todo de la decada del 2010 y en Japones. La musica es una parte muy importante de mi día a día.' 
+    },
+    { 
+      title: 'Series y Peliculas', 
+      image: '/api/placeholder/200/150', 
+      description: 'Una de mis cosas favoritas por mas que actualmente sea cada vez menos constante, es ver series y peliculas, me encanta el drama y el romance. Sobretodo las series como el Anime, Kdramas, Manga y Peliculas del Espacio o el Universo' 
+    },
+    { 
+      title: 'Formula 1', 
+      image: '/api/placeholder/200/150', 
+      description: 'El deporte que mas me apasiona seguir es la Formula 1, me encanta ver las carreras y los pilotos, me encanta el estilo de los coches y la tecnologia que se utiliza en la Formula 1, me encanta su historia y su evolucion. Soy fanatico de Max Verstappen, Colapinto, Schumacher, Hamilton y Checo Perez' 
+    },
+    { 
+      title: 'Astrofisica y Astronomia', 
+      image: '/api/placeholder/200/150', 
+      description: 'La astrofisica y la astronomia son dos de mis cosas favoritas, me encanta aprender sobre el universo y la fisica, me encanta aprender sobre los planetas, estrellas, galaxias y el espacio. Me apasiona investigar sobre la teoria de la relatividad y la teoria de la cuantica.'
     }
   ];
   
@@ -161,13 +181,13 @@ export default function Bitacora() {
                 />
               </section>
               <section className="text-center space-y-2 md:space-y-4">
-                <h3 className="text-primary font-serif text-lg md:text-xl">Aventurero</h3>
+                <h3 className="text-primary font-serif text-lg md:text-xl">Programador</h3>
                 <section className="text-xs md:text-sm text-secondary">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.
+                  Soy Diego Alejandro Ocampo, tengo 20 años, soy de Colombia, me gusta mucho la programacion y la tecnologia.
                 </section>
                 <section className="flex justify-center space-x-2 mt-2 md:mt-4">
                   {avatars.map((avatar, index) => (
-                    <section key={index} className="w-6 h-6 md:w-8 md:h-8" onClick={() => setSelectedAvatar(index)}>
+                    <section key={index} className="w-12 h-12 md:w-22 md:h-22" onClick={() => setSelectedAvatar(index)}>
                       <Avatar 
                         src={avatar} 
                         alt={`Avatar ${index}`} 
@@ -185,22 +205,23 @@ export default function Bitacora() {
                   <section className="card-bg p-3 md:p-4 rounded-lg border-2 card-border shadow-inner">
                     <Image src="/api/placeholder/600/150" alt="Banner" width={600} height={150} className="w-full h-24 md:h-32 object-cover rounded" />
                     <section className="text-xs text-secondary mt-1 md:mt-2 italic">
-                      &quot;Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.&quot;
+                      
                     </section>
                   </section>
                 </section>
                 
                 <section className="prose max-w-none">
                   <p className="text-primary text-sm md:text-base first-letter:text-2xl md:first-letter:text-3xl first-letter:font-bold first-letter:float-left first-letter:mr-1">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu semper sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas.
+                    Actualmente estoy estudiando programacion en la Universidad Cooperativa de Colombia, me gusta mucho el desarrollo web y el desarrollo de videojuegos.
                   </p>
-                  
-                  <p className="text-primary text-sm md:text-base">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu semper sed diam urna tempor.
+                  <p className="text-primary text-sm md:text-base py-2">
+                    Curso el 5to semestre de la carrera de Ingenieria de Software, una parte de la programacion que me gusta es la programacion orientada a objetos y la aplicabilidad de esta en el desarrollo de videojuegos.
                   </p>
-                  
-                  <p className="text-primary text-sm md:text-base">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis.
+                  <p className="text-primary text-sm md:text-base py-2">
+                    La programacion es una parte muy importante de mi vida, junto a la astrofisica, son mis dos puntos mas algidos de mi vida, en donde me decidi a estudiar programacion y seguir de cerca la astrofisica.
+                  </p>
+                  <p className="text-primary text-sm md:text-base py-2">
+                    Cuando termine la carrera, me gustaria trabajar en una empresa de desarrollo de videojuegos, o en intentar fundar mi propia empresa de desarrollo de videojuegos. Mientras tanto, me gustaria seguir estudiando y mejorando mis habilidades en la programacion.
                   </p>
                 </section>
               </section>
@@ -219,12 +240,12 @@ export default function Bitacora() {
                 />
               </section>
               <section className="text-center space-y-2 md:space-y-4">
-                <h3 className="text-primary font-serif text-lg md:text-xl">Explorador</h3>
+                <h3 className="text-primary font-serif text-lg md:text-xl">Programador</h3>
                 <section className="text-xs md:text-sm text-secondary">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisque faucibus ex sapien vitae pellentesque.
+                  Soy Diego Alejandro Ocampo, tengo 20 años, soy de Colombia, me gusta mucho la programacion y la tecnologia.
                 </section>
                 <section className="mt-2 md:mt-4 text-primary text-sm md:text-base font-semibold">
-                  Contacto: aventurero@example.com
+                  Contacto: daom3456@gmail.com
                 </section>
               </section>
             </section>
@@ -234,23 +255,33 @@ export default function Bitacora() {
               
               <section className="space-y-4 md:space-y-6">
                 <section className="card-bg p-3 md:p-4 rounded-lg border-2 card-border shadow-inner">
-                  <h4 className="font-medium text-primary text-sm md:text-base">Experiencia como Aventurero</h4>
+                  <h4 className="font-medium text-primary text-sm md:text-base">Resumen Profesional</h4>
                   <p className="text-secondary mt-1 md:mt-2 text-xs md:text-sm">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis.
+                    Estudiante iniciando el 5to semestre en ingeniería en software con habilidades en desarrollo frontend, desarrollo en diferentes tecnologías (Vue, React, Next, Springboot, entre otros) y múltiples lenguajes de programación como Typescript, Java, Python, C#, entre otros, participación en hackathon Pasto, destacado por participación en proyectos de inteligencia artificial, además cuenta con habilidades en la resolución de conflictos y trabajo en equipo durante proyectos universitarios.
                   </p>
                 </section>
                 
                 <section className="card-bg p-3 md:p-4 rounded-lg border-2 card-border shadow-inner">
-                  <h4 className="font-medium text-primary text-sm md:text-base">Educación y Entrenamiento</h4>
+                  <h4 className="font-medium text-primary text-sm md:text-base">Programas y habilidades</h4>
                   <p className="text-secondary mt-1 md:mt-2 text-xs md:text-sm">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis.
+                    Desarrollo en múltiples frameworks y lenguajes de programación.
+                    Manejo de nivel intermedio de Ingles, Honestidad, habilidades asertivas como lo son el respeto, saber escuchar, dar mi opinión de manera adecuada, de la misma manera una alta capacidad sobre la resolución de conflictos y un adecuado trabajo en equipo.
                   </p>
                 </section>
                 
                 <section className="card-bg p-3 md:p-4 rounded-lg border-2 card-border shadow-inner">
-                  <h4 className="font-medium text-primary text-sm md:text-base">Habilidades de Exploración</h4>
+                  <h4 className="font-medium text-primary text-sm md:text-base">Cursos y certificaciones</h4>
                   <p className="text-secondary mt-1 md:mt-2 text-xs md:text-sm">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis.
+                    2024	Certificación de participación en Hackathon	- ParqueSoft (Nariño) y ConeXSurTic (Nariño)
+                  </p>
+                </section>
+
+                <section className="card-bg p-3 md:p-4 rounded-lg border-2 card-border shadow-inner">
+                  <h4 className="font-medium text-primary text-sm md:text-base">Experiencia laboral</h4>
+                  <p className="text-secondary mt-1 md:mt-2 text-xs md:text-sm">
+                    2024 Hackaton - 
+                    Colaborador en Desarrollo de FrontEnd y BackEnd
+                    En la Hackathon diciembre 2024 por ConeXSurTic y ParqueSoft (Nariño) “Concurso de Innovación para Arenas Digitales” se me dio la oportunidad de desarrollar una solución tecnológica en equipos para un problema propuesto por la misma organización, en donde debíamos entregar un producto mínimo viable desarrollado durante 48 horas, en la que haríamos uso de Inteligencia Artificial para complementar las necesidades propuestas
                   </p>
                 </section>
               </section>

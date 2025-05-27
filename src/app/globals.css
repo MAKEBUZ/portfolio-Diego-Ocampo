@@ -247,4 +247,44 @@ html, body, #__next {
 .dark .testimonials-scroll {
   scrollbar-color: hsl(var(--color-accent)) hsl(var(--color-card-bg));
 }
+
+/* Estilos personalizados para la scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--color-card-bg));
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, hsl(var(--color-accent-light)) 60%, hsl(var(--color-accent)) 100%);
+  border-radius: 5px;
+  border: 2px solid hsl(var(--color-card-bg));
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, hsl(var(--color-accent)) 60%, hsl(var(--color-accent-light)) 100%);
+}
+
+/* Estilos para Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--color-accent)) hsl(var(--color-card-bg));
+}
+
+/* Estilos específicos para el modo oscuro */
+.dark ::-webkit-scrollbar-track {
+  background: hsl(var(--color-card-bg));
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, hsl(var(--color-accent-light)) 60%, hsl(var(--color-accent)) 100%);
+  border: 2px solid hsl(var(--color-card-bg));
+}
+
+.dark * {
+  scrollbar-color: hsl(var(--color-accent)) hsl(var(--color-card-bg));
+}
 }
