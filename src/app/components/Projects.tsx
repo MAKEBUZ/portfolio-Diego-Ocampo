@@ -34,18 +34,37 @@ const opciones = [
 ];
 
 function StarBackground() {
+  const [stars, setStars] = useState<Array<{
+    width: number;
+    height: number;
+    top: number;
+    left: number;
+    filter: number;
+  }>>([]);
+
+  useEffect(() => {
+    const newStars = Array.from({ length: 80 }, () => ({
+      width: Math.random() * 2 + 1,
+      height: Math.random() * 2 + 1,
+      top: Math.random() * 100,
+      left: Math.random() * 100,
+      filter: Math.random() * 1.5
+    }));
+    setStars(newStars);
+  }, []);
+
   return (
     <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
-      {[...Array(80)].map((_, i) => (
+      {stars.map((star, i) => (
         <div
           key={i}
           className="absolute rounded-full bg-white opacity-30 animate-pulse"
           style={{
-            width: `${Math.random() * 2 + 1}px`,
-            height: `${Math.random() * 2 + 1}px`,
-            top: `${Math.random() * 100}%`,
-            left: `${Math.random() * 100}%`,
-            filter: `blur(${Math.random() * 1.5}px)`
+            width: `${star.width}px`,
+            height: `${star.height}px`,
+            top: `${star.top}%`,
+            left: `${star.left}%`,
+            filter: `blur(${star.filter}px)`
           }}
         />
       ))}
