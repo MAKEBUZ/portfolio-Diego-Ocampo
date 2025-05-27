@@ -310,7 +310,6 @@ export default function Bitacora() {
                 </div>
               ) : (
                 <div className="flex flex-col items-center justify-center h-full text-secondary text-sm md:text-base">
-                  <div className="text-4xl md:text-6xl mb-3 md:mb-4">🏺</div>
                   <p>Selecciona un pasatiempo para ver su descripción</p>
                 </div>
               )}
