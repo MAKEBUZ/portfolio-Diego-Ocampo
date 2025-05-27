@@ -217,7 +217,6 @@ html, body, #__next {
   overflow: hidden;
 }
 
-/* Clases específicas para los fondos animados */
 .three-container {
   position: fixed;
   top: 0;
@@ -225,5 +224,35 @@ html, body, #__next {
   width: 100%;
   height: 100%;
   z-index: 0;
+}
+
+/* Scrollbar personalizado para la grilla de testimonios */
+.testimonials-scroll::-webkit-scrollbar {
+  width: 12px;
+}
+
+.testimonials-scroll::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, hsl(var(--color-accent-light)) 60%, hsl(var(--color-accent)) 100%);
+  border-radius: 8px;
+  border: 2px solid hsl(var(--color-card-bg));
+}
+
+.testimonials-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.testimonials-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--color-accent)) hsl(var(--color-card-bg));
+}
+
+/* Modo oscuro */
+.dark .testimonials-scroll::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, hsl(var(--color-accent-light)) 60%, hsl(var(--color-accent)) 100%);
+  border: 2px solid hsl(var(--color-card-bg));
+}
+
+.dark .testimonials-scroll {
+  scrollbar-color: hsl(var(--color-accent)) hsl(var(--color-card-bg));
 }
 }
