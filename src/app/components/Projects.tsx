@@ -119,13 +119,13 @@ const proyectos = [
     titulo: "Backend para Historial Clinico",
     descripcion:
       "Backend para DTO de historial clinico",
-    imagen: "/images/projects/proyecto10.png",
+    imagen: "/images/projects/proyecto9.png",
     detalles: "Se utilizaron DTO para la transformacion de datos traidos desde otros microservicios y creacion del historial clinico",
     links: [
       { url: "https://github.com/riverbonilla1504/tallerfinalpoo", nombre: "Repositorio" }
     ],
     informacion: "Trabajo realizado en equipo por 4 personas. Backend desarrollado en java",
-    avatar: "/images/projects/pa-9.png",
+    avatar: "/images/projects/pa-8.png",
   },
 ];
 
