@@ -24,8 +24,6 @@ interface AvatarProps {
 interface HobbyProps {
   title: string;
   image: string;
-  bannerImage: string;
-  description: string;
 }
 
 const Avatar = ({ src, alt, selected, onClick }: AvatarProps) => (
@@ -37,14 +35,14 @@ const Avatar = ({ src, alt, selected, onClick }: AvatarProps) => (
   </section>
 );
 
-const HobbyCard = ({ title, image, bannerImage, description, onClick }: HobbyProps & { onClick: () => void }) => (
+const HobbyCard = ({ title, image, onClick }: HobbyProps & { onClick: () => void }) => (
   <section 
     className="relative overflow-hidden rounded-lg md:rounded-full shadow-md hover:shadow-xl cursor-pointer transition-all duration-300"
     onClick={onClick}
   >
     <Image src={image} alt={title} width={200} height={150} className="w-full h-32 object-cover" />
     <section className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-gray-900 to-transparent p-2">
-      {/* <h4 className="font-medium text-light">{title}</h4> */}
+      <h4 className="font-medium text-light">{title}</h4>
     </section>
   </section>
 );
@@ -290,7 +288,7 @@ export default function Bitacora() {
                   <p className="text-secondary mt-1 md:mt-2 text-xs md:text-sm">
                     2024 Hackaton - 
                     Colaborador en Desarrollo de FrontEnd y BackEnd
-                    En la Hackathon diciembre 2024 por ConeXSurTic y ParqueSoft (Nariño) "Concurso de Innovación para Arenas Digitales" se me dio la oportunidad de desarrollar una solución tecnológica en equipos para un problema propuesto por la misma organización, en donde debíamos entregar un producto mínimo viable desarrollado durante 48 horas, en la que haríamos uso de Inteligencia Artificial para complementar las necesidades propuestas
+                    En la Hackathon diciembre 2024 por ConeXSurTic y ParqueSoft (Nariño) Concurso de Innovación para Arenas Digitales se me dio la oportunidad de desarrollar una solución tecnológica en equipos para un problema propuesto por la misma organización, en donde debíamos entregar un producto mínimo viable desarrollado durante 48 horas, en la que haríamos uso de Inteligencia Artificial para complementar las necesidades propuestas
                   </p>
                 </section>
               </section>
@@ -308,8 +306,6 @@ export default function Bitacora() {
                     key={index}
                     title={hobby.title}
                     image={hobby.image}
-                    bannerImage={hobby.bannerImage}
-                    description={hobby.description}
                     onClick={() => setSelectedHobby(index)}
                   />
                 ))}
