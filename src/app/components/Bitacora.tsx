@@ -146,7 +146,7 @@ export default function Bitacora() {
     { 
       title: 'Musica', 
       image: '/images/hobbies/musica_.jpg', 
-      bannerImage: '/images/hobbies/musica-banner.jpg',
+      bannerImage: '/images/hobbies/musica-banner.png',
       description: 'Me encanta la musica y sobre todo de la decada del 2010 y en Japones. La musica es una parte muy importante de mi día a día.' 
     },
     { 

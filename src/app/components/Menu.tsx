@@ -186,9 +186,9 @@ const Menu: React.FC = () => {
                 </section>
                 
                 <section className="flex flex-col items-center gap-6">
-                  <SidebarItem icon={<Github size={24} />} href="https://github.com" ariaLabel="GitHub" />
-                  <SidebarItem icon={<Linkedin size={24} />} href="https://linkedin.com" ariaLabel="LinkedIn" />
-                  <SidebarItem icon={<Mail size={24} />} href="mailto:contact@example.com" ariaLabel="Contact" />
+                  <SidebarItem icon={<Github size={24} />} href="https://github.com/MAKEBUZ" ariaLabel="GitHub" />
+                  <SidebarItem icon={<Linkedin size={24} />} href="https://www.linkedin.com/in/diego-alejandro-ocampo-madro%C3%B1ero-307706339?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app " ariaLabel="LinkedIn" />
+                  <SidebarItem icon={<Mail size={24} />} href="mailto:daom3456@gmail.com" ariaLabel="Contact" />
                 </section>
                 
                 <section className="flex flex-col items-center">
