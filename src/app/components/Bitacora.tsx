@@ -41,9 +41,6 @@ const HobbyCard = ({ title, image, onClick }: HobbyProps & { onClick: () => void
     onClick={onClick}
   >
     <Image src={image} alt={title} width={200} height={150} className="w-full h-32 object-cover" />
-    <section className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-gray-900 to-transparent p-2">
-      <h4 className="font-medium text-light">{title}</h4>
-    </section>
   </section>
 );
 
