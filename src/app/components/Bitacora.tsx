@@ -244,7 +244,7 @@ export default function Bitacora() {
                 />
               </section>
               <section className="text-center space-y-2 md:space-y-4">
-                <h3 className="text-primary font-serif text-lg md:text-xl">Programador</h3>
+                <h3 className="text-primary font-serif text-lg md:text-xl mt-5 md:mt-9">Programador</h3>
                 <section className="text-xs md:text-sm text-secondary">
                   Soy Diego Alejandro Ocampo, tengo 20 años, soy de Colombia, me gusta mucho la programacion y la tecnologia.
                 </section>

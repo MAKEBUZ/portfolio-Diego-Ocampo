@@ -67,10 +67,12 @@ export default function LoadingScreen() {
       bgSecondary: isDarkMode ? 'bg-gray-800' : 'bg-white',
       textPrimary: isDarkMode ? 'text-gray-100' : 'text-gray-900',
       textSecondary: isDarkMode ? 'text-gray-400' : 'text-gray-500',
-      iconActive: isDarkMode ? 'text-blue-400' : 'text-gray-800',
+      iconActive: isDarkMode ? 'text-[#f4e39f]' : 'text-gray-800',
       iconInactive: isDarkMode ? 'text-gray-600' : 'text-gray-400',
       progressBg: isDarkMode ? 'bg-gray-700' : 'bg-gray-200',
-      progressFill: isDarkMode ? 'from-blue-400 to-blue-500' : 'from-gray-300 to-gray-500',
+      progressFill: isDarkMode 
+        ? 'from-[hsl(var(--color-accent-light))] from-60% to-[hsl(var(--color-accent))] to-100%' 
+        : 'from-gray-300 to-gray-500',
       gradientBg: isDarkMode 
         ? 'from-blue-900/20 via-gray-900 to-gray-800/20' 
         : 'from-yellow-100/50 via-gray-50 to-blue-100/50'
