@@ -208,7 +208,7 @@ const Menu: React.FC = () => {
                   <section className="flex flex-col sm:flex-row items-center justify-center sm:justify-start">
                     <section className="relative w-24 h-24 rounded-full overflow-hidden border-4 border-profile bg-white">
                       <Image 
-                        src="/avatar.jpg" 
+                        src="/images/avatars/avatar1.jpg" 
                         alt="Profile" 
                         fill
                         className="object-cover"

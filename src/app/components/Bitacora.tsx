@@ -24,6 +24,7 @@ interface AvatarProps {
 interface HobbyProps {
   title: string;
   image: string;
+  bannerImage: string;
   description: string;
 }
 
@@ -36,14 +37,14 @@ const Avatar = ({ src, alt, selected, onClick }: AvatarProps) => (
   </section>
 );
 
-const HobbyCard = ({ title, image, onClick }: HobbyProps & { onClick: () => void }) => (
+const HobbyCard = ({ title, image, bannerImage, description, onClick }: HobbyProps & { onClick: () => void }) => (
   <section 
     className="relative overflow-hidden rounded-lg md:rounded-full shadow-md hover:shadow-xl cursor-pointer transition-all duration-300"
     onClick={onClick}
   >
     <Image src={image} alt={title} width={200} height={150} className="w-full h-32 object-cover" />
     <section className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-gray-900 to-transparent p-2">
-      <h4 className="font-medium text-light">{title}</h4>
+      {/* <h4 className="font-medium text-light">{title}</h4> */}
     </section>
   </section>
 );
@@ -117,50 +118,58 @@ export default function Bitacora() {
   ];
   
   const avatars = [
-    '/api/placeholder/200/200',
-    '/api/placeholder/200/200',
-    '/api/placeholder/200/200'
+    '/images/avatars/avatar1.jpg',
+    '/images/avatars/avatar2.jpg',
+    '/images/avatars/avatar3.jpg'
   ];
 
   const hobbies = [
     { 
       title: 'Lectura', 
-      image: '/api/placeholder/200/150', 
+      image: '/images/hobbies/lectura.jpg', 
+      bannerImage: '/images/hobbies/lectura-banner.png',
       description: 'Me encanta leer, sobre todo Novelas y Manwhas Coreanos, Novelas y Manhuas Chinos y Novelas y Mangas Japoneses, me gusta mucho el romance, la acción y el drama.' 
     },
     { 
       title: 'Fotografía', 
-      image: '/api/placeholder/200/150', 
+      image: '/images/hobbies/foto.jpg', 
+      bannerImage: '/images/hobbies/foto-banner.jpg',
       description: 'Me encanta la fotografia, sobre todo la fotografia de paisajes y la fotografia de retrato, me fascina la fotografia nocturna y sobre todo del extenso mar de nubes' 
     },
     { 
       title: 'Colección de Mangas, Figuras y Albunes', 
-      image: '/api/placeholder/200/150', 
+      image: '/images/hobbies/coleccion.jpg', 
+      bannerImage: '/images/hobbies/coleccion-banner.jpg',
       description: 'Me encanta coleccionar figuras de anime, mangas, videojuegos y albunes de musica, me encanta ver los detalles de cada figura y manga, y escuchar la musica de los albunes de musica.' 
     },
     { 
       title: 'Videojuegos', 
-      image: '/api/placeholder/200/150', 
+      image: '/images/hobbies/videojuegos.png', 
+      bannerImage: '/images/hobbies/videojuegos-banner.png',
       description: 'Los videojuegos son una de las cosas que mas me gustan, me encanta jugar a los videojuegos y sobre todo a los videojuegos RPG y sus derivados, me encanta sobre todo el estilo de juegos anime. Tambies los juegos de deportes como MotoGP, Formula 1 y Rocket League' 
     },
     { 
       title: 'Musica', 
-      image: '/api/placeholder/200/150', 
+      image: '/images/hobbies/musica_.jpg', 
+      bannerImage: '/images/hobbies/musica-banner.jpg',
       description: 'Me encanta la musica y sobre todo de la decada del 2010 y en Japones. La musica es una parte muy importante de mi día a día.' 
     },
     { 
       title: 'Series y Peliculas', 
-      image: '/api/placeholder/200/150', 
+      image: '/images/hobbies/peliculas.jpg', 
+      bannerImage: '/images/hobbies/peliculas-banner.jpg',
       description: 'Una de mis cosas favoritas por mas que actualmente sea cada vez menos constante, es ver series y peliculas, me encanta el drama y el romance. Sobretodo las series como el Anime, Kdramas, Manga y Peliculas del Espacio o el Universo' 
     },
     { 
       title: 'Formula 1', 
-      image: '/api/placeholder/200/150', 
+      image: '/images/hobbies/f1.png', 
+      bannerImage: '/images/hobbies/f1-banner.jpg',
       description: 'El deporte que mas me apasiona seguir es la Formula 1, me encanta ver las carreras y los pilotos, me encanta el estilo de los coches y la tecnologia que se utiliza en la Formula 1, me encanta su historia y su evolucion. Soy fanatico de Max Verstappen, Colapinto, Schumacher, Hamilton y Checo Perez' 
     },
     { 
       title: 'Astrofisica y Astronomia', 
-      image: '/api/placeholder/200/150', 
+      image: '/images/hobbies/astrofisica.jpg', 
+      bannerImage: '/images/hobbies/astrofisica-banner.jpg',
       description: 'La astrofisica y la astronomia son dos de mis cosas favoritas, me encanta aprender sobre el universo y la fisica, me encanta aprender sobre los planetas, estrellas, galaxias y el espacio. Me apasiona investigar sobre la teoria de la relatividad y la teoria de la cuantica.'
     }
   ];
@@ -181,7 +190,7 @@ export default function Bitacora() {
                 />
               </section>
               <section className="text-center space-y-2 md:space-y-4">
-                <h3 className="text-primary font-serif text-lg md:text-xl">Programador</h3>
+                <h3 className="text-primary font-serif text-lg md:text-xl mt-5 md:mt-9">Programador</h3>
                 <section className="text-xs md:text-sm text-secondary">
                   Soy Diego Alejandro Ocampo, tengo 20 años, soy de Colombia, me gusta mucho la programacion y la tecnologia.
                 </section>
@@ -203,7 +212,7 @@ export default function Bitacora() {
               <section className="space-y-3 md:space-y-4">
                 <section className="w-full">
                   <section className="card-bg p-3 md:p-4 rounded-lg border-2 card-border shadow-inner">
-                    <Image src="/api/placeholder/600/150" alt="Banner" width={600} height={150} className="w-full h-24 md:h-32 object-cover rounded" />
+                    <Image src="/images/main-banner.jpg" alt="Banner" width={600} height={150} className="w-full h-24 md:h-32 object-cover rounded" />
                     <section className="text-xs text-secondary mt-1 md:mt-2 italic">
                       
                     </section>
@@ -281,7 +290,7 @@ export default function Bitacora() {
                   <p className="text-secondary mt-1 md:mt-2 text-xs md:text-sm">
                     2024 Hackaton - 
                     Colaborador en Desarrollo de FrontEnd y BackEnd
-                    En la Hackathon diciembre 2024 por ConeXSurTic y ParqueSoft (Nariño) “Concurso de Innovación para Arenas Digitales” se me dio la oportunidad de desarrollar una solución tecnológica en equipos para un problema propuesto por la misma organización, en donde debíamos entregar un producto mínimo viable desarrollado durante 48 horas, en la que haríamos uso de Inteligencia Artificial para complementar las necesidades propuestas
+                    En la Hackathon diciembre 2024 por ConeXSurTic y ParqueSoft (Nariño) "Concurso de Innovación para Arenas Digitales" se me dio la oportunidad de desarrollar una solución tecnológica en equipos para un problema propuesto por la misma organización, en donde debíamos entregar un producto mínimo viable desarrollado durante 48 horas, en la que haríamos uso de Inteligencia Artificial para complementar las necesidades propuestas
                   </p>
                 </section>
               </section>
@@ -299,6 +308,7 @@ export default function Bitacora() {
                     key={index}
                     title={hobby.title}
                     image={hobby.image}
+                    bannerImage={hobby.bannerImage}
                     description={hobby.description}
                     onClick={() => setSelectedHobby(index)}
                   />
@@ -308,36 +318,60 @@ export default function Bitacora() {
             
             <section className="w-full md:w-2/3 p-4 md:p-6 overflow-y-auto">
               {selectedHobby !== null ? (
-                <section className="space-y-3 md:space-y-4">
-                  <section className="flex items-center mb-3 md:mb-4">
-                    <h3 className="text-lg md:text-xl font-serif text-primary">{hobbies[selectedHobby].title}</h3>
-                    <section className="ml-auto">
-                      <button 
-                        className="text-accent hover:text-accent-dark text-lg"
-                        onClick={() => setSelectedHobby(null)}
-                      >
-                        ✖
-                      </button>
+                <>
+                  <section className="md:hidden fixed inset-0 z-50 bg-black bg-opacity-0 flex flex-col justify-center items-center p-2 animate-fade-in">
+                    <section className="bg-dark card-bg rounded-lg shadow-2xl w-full max-w-md mx-auto overflow-y-auto">
+                      <section className="flex items-center mb-3 md:mb-4 p-4">
+                        <h3 className="text-lg md:text-xl font-serif text-primary">{hobbies[selectedHobby].title}</h3>
+                        <section className="ml-auto">
+                          <button 
+                            className="text-accent hover:text-accent-dark text-lg"
+                            onClick={() => setSelectedHobby(null)}
+                          >
+                            ✖
+                          </button>
+                        </section>
+                      </section>
+                      <Image 
+                        src={hobbies[selectedHobby].bannerImage} 
+                        alt={hobbies[selectedHobby].title} 
+                        width={200} 
+                        height={150} 
+                        className="w-full h-48 object-cover rounded-lg shadow-md"
+                      />
+                      <section className="card-bg p-3 rounded-lg border-2 card-border shadow-inner">
+                        <p className="text-primary text-sm">
+                          {hobbies[selectedHobby].description}
+                        </p>
+                      </section>
                     </section>
                   </section>
-                  
-                  <Image 
-                    src={hobbies[selectedHobby].image} 
-                    alt={hobbies[selectedHobby].title} 
-                    width={200} 
-                    height={150} 
-                    className="w-full h-48 md:h-64 object-cover rounded-lg shadow-md"
-                  />
-                  
-                  <section className="card-bg p-3 md:p-4 rounded-lg border-2 card-border shadow-inner">
-                    <p className="text-primary text-sm md:text-base">
-                      {hobbies[selectedHobby].description}
-                    </p>
-                    <p className="text-primary mt-2 md:mt-4 text-sm md:text-base">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu semper sed diam urna tempor.
-                    </p>
+                  <section className="hidden md:block space-y-3 md:space-y-4">
+                    <section className="flex items-center mb-3 md:mb-4">
+                      <h3 className="text-lg md:text-xl font-serif text-primary">{hobbies[selectedHobby].title}</h3>
+                      <section className="ml-auto">
+                        <button 
+                          className="text-accent hover:text-accent-dark text-lg"
+                          onClick={() => setSelectedHobby(null)}
+                        >
+                          ✖
+                        </button>
+                      </section>
+                    </section>
+                    <Image 
+                      src={hobbies[selectedHobby].bannerImage} 
+                      alt={hobbies[selectedHobby].title} 
+                      width={200} 
+                      height={150} 
+                      className="w-full h-64 object-cover rounded-lg shadow-md"
+                    />
+                    <section className="card-bg p-3 md:p-4 rounded-lg border-2 card-border shadow-inner">
+                      <p className="text-primary text-base">
+                        {hobbies[selectedHobby].description}
+                      </p>
+                    </section>
                   </section>
-                </section>
+                </>
               ) : (
                 <section className="flex flex-col items-center justify-center h-full text-secondary text-sm md:text-base">
                   <p>Selecciona un pasatiempo para ver su descripción</p>
