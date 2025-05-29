@@ -154,6 +154,19 @@ const proyectos = [
     informacion: "Juego desarrollado completamente en Java puro",
     avatar: "/images/projects/pa-11.png",
   },
+  {
+    id: 12,
+    titulo: "Character-Customizer",
+    descripcion:
+      "Juego basico desarrollado en Uniti",
+    imagen: "/images/projects/proyecto12.png",
+    detalles: "",
+    links: [
+      { url: "https://github.com/MAKEBUZ/Patrones-de-software", nombre: "Repositorio" },
+    ],
+    informacion: "Juego desarrollado completamente C# - Unity",
+    avatar: "/images/projects/pa-12.png",
+  },
 ];
 
 const opciones = [
