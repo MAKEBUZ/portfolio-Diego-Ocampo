@@ -158,7 +158,7 @@ const proyectos = [
     id: 12,
     titulo: "Character-Customizer",
     descripcion:
-      "Juego basico desarrollado en Uniti",
+      "Juego basico desarrollado en Unity",
     imagen: "/images/projects/proyecto12.png",
     detalles: "",
     links: [
