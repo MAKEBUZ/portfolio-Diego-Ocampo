@@ -217,7 +217,7 @@ const Menu: React.FC = () => {
                     </section>
                     <section className="sm:ml-6 mt-4 sm:mt-0 text-center sm:text-left">
                       <h1 className="text-xl font-semibold text-profile-primary">Diego Alejandro Ocampo</h1>
-                      <p className="text-sm text-profile-secondary">Desarrollador Full Stack</p>
+                      <p className="text-sm text-profile-secondary">Desarrollador Junior - Estudiante</p>
                     </section>
                   </section>
                 </section>
