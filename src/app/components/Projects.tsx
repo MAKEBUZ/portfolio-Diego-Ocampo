@@ -98,7 +98,7 @@ const proyectos = [
       { url: "https://loginar.vercel.app/", nombre: "Despliegue" },
       { url: "https://github.com/T0m4s1n/loginar", nombre: "Repositorio" }
     ],
-    informacion: "Desarrollada en Vue.js para la Hackaton 2024",
+    informacion: "Desarrollada en Vue.js para la Hackaton 2024, realizado por 3 personas.",
     avatar: "/images/projects/pa-7.png",
   },
   {
@@ -126,6 +126,33 @@ const proyectos = [
     ],
     informacion: "Trabajo realizado en equipo por 4 personas. Backend desarrollado en java",
     avatar: "/images/projects/pa-8.png",
+  },
+  {
+    id: 10,
+    titulo: "Resolution",
+    descripcion:
+      "Web para hacer reclamos y solicitudes",
+    imagen: "/images/projects/proyecto10.png",
+    detalles: "",
+    links: [
+      { url: "https://white-sand-08e1fda0f.6.azurestaticapps.net/", nombre: "Despliegue" },
+      { url: "https://github.com/MAKEBUZ/ISWElectiva110202-3-RepoFork", nombre: "Repositorio" }
+    ],
+    informacion: "Trabajo realizado en equipo por 2 personas. Backend con Django y Python, Front con tailwind y Next.js",
+    avatar: "/images/projects/pa-10.png",
+  },
+  {
+    id: 11,
+    titulo: "Raccon The Game",
+    descripcion:
+      "Juego basico desarrollado en Java",
+    imagen: "/images/projects/proyecto11.png",
+    detalles: "",
+    links: [
+      { url: "https://github.com/MAKEBUZ/Racoon-The-Game", nombre: "Repositorio" }
+    ],
+    informacion: "Juego desarrollado completamente en Java puro",
+    avatar: "/images/projects/pa-11.png",
   },
 ];
 
