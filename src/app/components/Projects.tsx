@@ -167,6 +167,20 @@ const proyectos = [
     informacion: "Juego desarrollado completamente C# - Unity",
     avatar: "/images/projects/pa-12.png",
   },
+  {
+    id: 13,
+    titulo: "M.I.I.T Game",
+    descripcion:
+      "Proyecto de patrones de software con front y un juego desarrollado en Unity",
+    imagen: "/images/projects/proyecto13.png",
+    detalles: "",
+    links: [
+      { url: "https://miit-game-front.vercel.app/", nombre: "Despliegue" },
+      { url: "https://github.com/T0m4s1n/MIIT-game-front", nombre: "Repositorio" }
+    ],
+    informacion: "Frontend en vue.js y el juego desarrollado en C# - Unity",
+    avatar: "/images/projects/pa-13.png",
+  },
 ];
 
 const opciones = [
