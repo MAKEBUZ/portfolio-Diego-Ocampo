@@ -216,16 +216,16 @@ export default function Bitacora() {
                 
                 <section className="prose max-w-none">
                   <p className="text-primary text-sm md:text-base first-letter:text-2xl md:first-letter:text-3xl first-letter:font-bold first-letter:float-left first-letter:mr-1">
-                    Actualmente estoy estudiando programacion en la Universidad Cooperativa de Colombia, me gusta mucho el desarrollo web y el desarrollo de videojuegos.
+                    Actualmente estoy estudiando programacion en la Universidad Cooperativa de Colombia, me gusta mucho el desarrollo web, backend y el desarrollo de videojuegos.
                   </p>
                   <p className="text-primary text-sm md:text-base py-2">
-                    Curso el 5to semestre de la carrera de Ingenieria de Software, una parte de la programacion que me gusta es la programacion orientada a objetos y la aplicabilidad de esta en el desarrollo de videojuegos.
+                    Curso el 6to semestre de la carrera de Ingenieria de Software, una parte de la programacion que me gusta es la programacion orientada a objetos y la aplicabilidad de esta en el desarrollo de videojuegos.
                   </p>
                   <p className="text-primary text-sm md:text-base py-2">
                     La programacion es una parte muy importante de mi vida, junto a la astrofisica, son mis dos puntos mas algidos de mi vida, en donde me decidi a estudiar programacion y seguir de cerca la astrofisica.
                   </p>
                   <p className="text-primary text-sm md:text-base py-2">
-                    Cuando termine la carrera, me gustaria trabajar en una empresa de desarrollo de videojuegos, o en intentar fundar mi propia empresa de desarrollo de videojuegos. Mientras tanto, me gustaria seguir estudiando y mejorando mis habilidades en la programacion.
+                    Mi objetivo es desarrollarme profesionalmente en el área del desarrollo de software, con interés especial en la industria de los videojuegos. A mediano y largo plazo, busco adquirir experiencia en proyectos tecnológicos que fortalezcan mis habilidades en programación, trabajo en equipo y resolución de problemas, mientras continúo formándome y aprendiendo nuevas herramientas y lenguajes.
                   </p>
                 </section>
               </section>
@@ -261,7 +261,7 @@ export default function Bitacora() {
                 <section className="card-bg p-3 md:p-4 rounded-lg border-2 card-border shadow-inner">
                   <h4 className="font-medium text-primary text-sm md:text-base">Resumen Profesional</h4>
                   <p className="text-secondary mt-1 md:mt-2 text-xs md:text-sm">
-                    Estudiante iniciando el 5to semestre en ingeniería en software con habilidades en desarrollo frontend, desarrollo en diferentes tecnologías (Vue, React, Next, Springboot, entre otros) y múltiples lenguajes de programación como Typescript, Java, Python, C#, entre otros, participación en hackathon Pasto, destacado por participación en proyectos de inteligencia artificial, además cuenta con habilidades en la resolución de conflictos y trabajo en equipo durante proyectos universitarios.
+                    Estudiante cursando el 6to semestre en ingeniería en software con habilidades en desarrollo frontend, desarrollo en diferentes tecnologías (Vue, React, Next, Springboot, entre otros) y múltiples lenguajes de programación como Typescript, Java, Python, C#, entre otros, participación en hackathon Pasto, destacado por participación en proyectos de inteligencia artificial, además cuenta con habilidades en la resolución de conflictos y trabajo en equipo durante proyectos universitarios.
                   </p>
                 </section>
                 
@@ -269,7 +269,7 @@ export default function Bitacora() {
                   <h4 className="font-medium text-primary text-sm md:text-base">Programas y habilidades</h4>
                   <p className="text-secondary mt-1 md:mt-2 text-xs md:text-sm">
                     Desarrollo en múltiples frameworks y lenguajes de programación.
-                    Manejo de nivel intermedio de Ingles, Honestidad, habilidades asertivas como lo son el respeto, saber escuchar, dar mi opinión de manera adecuada, de la misma manera una alta capacidad sobre la resolución de conflictos y un adecuado trabajo en equipo.
+                    Manejo de nivel avanzado de Ingles, Honestidad, habilidades asertivas como lo son el respeto, saber escuchar, dar mi opinión de manera adecuada, de la misma manera una alta capacidad sobre la resolución de conflictos y un adecuado trabajo en equipo.
                   </p>
                 </section>
                 
