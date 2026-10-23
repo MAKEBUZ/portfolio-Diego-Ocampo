@@ -1,11 +1,6 @@
-import HomeComponent from "./components/Home";
-
-export default function Home() {
-  return (
-    <main className="flex flex-col items-center justify-center w-screen min-h-screen bg-lighter dark:bg-darker transition-colors duration-300">
-      <section className="h-max-screen w-full flex items-center justify-center">
-        <HomeComponent />
-      </section>
-    </main>
-  );
+import Portfolio from './components/Portfolio';
+import { readContent } from '@/lib/store';
+export const dynamic = 'force-dynamic';
+export default async function Home() {
+  return <Portfolio content={await readContent()} />;
 }

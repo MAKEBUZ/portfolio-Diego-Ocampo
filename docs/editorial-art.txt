@@ -1,0 +1,14 @@
+Tool: built-in image_gen.imagegen (not CLI/API)
+Original generated asset: C:/Users/macab/.codex/generated_images/01a16748-0885-7f81-a9ae-35002c314b2f/exec-adedd94c-6b67-4dee-86cf-5d236b288953.png
+Final web asset: public/images/editorial/orbit-hero.webp
+Postprocessing: Sharp WebP conversion only, quality 90, effort 6; no image alteration.
+
+Use case: photorealistic-natural
+Asset type: Full-bleed cinematic photographic hero asset for a premium editorial personal website, landscape 16:9 at approximately 2048 pixels wide.
+Primary request: An original sophisticated cinematic science-fiction photograph evoking the awe of exploring the universe. An astronaut explorer stands on a pale gray mineral lunar landscape, facing away from the camera toward a vast eclipsed celestial sphere.
+Composition: The single astronaut is positioned in the RIGHT THIRD, centered around 75 percent of image width, and occupies approximately 75 percent of the height. Back view or gentle three-quarter back view; the helmet is completely intact and fully in frame. Strong iconic photographic silhouette with subtle rim lighting. Horizon very low. Keep the LEFT 45 percent almost entirely deep black / charcoal negative space, quiet, uncluttered, suitable for huge white HTML typography. A tremendous partially eclipsed planet hangs in the background above the low horizon, mostly behind and to the right of the astronaut, cropped naturally by the far right/top frame if needed. The lunar ground is pale chalk gray and begins primarily near the bottom 18 percent of frame; dark foreground shadows preserve contrast at lower left.
+Subject details: Realistically engineered high-detail white and gray space exploration suit, authentic technical fabric, seams, joints, life-support pack, understated wear and mineral dust, no logos, no flags, no writing, no patches with symbols. Beautiful restrained white and icy cool light on the suit against dense black space.
+Lighting and atmosphere: Dramatic high-contrast blacks and whites, icy white light, a tiny trace of cold blue, subtle suspended dust near the ground, immense scale and contemplative quiet. Physically credible photographic lighting and sophisticated filmic grain.
+Style/medium: Premium photorealistic cinematic editorial campaign photograph, medium-format detail, masterful art direction, dramatic but controlled. Original scene with no recreation of any film shot.
+Color palette: Black, charcoal, pale mineral gray, clean white, only minimal ice-blue accents. Absolutely no gold, amber, brown, olive green, or warm lighting.
+Constraints: No text or letters anywhere. No interface, no mockup, no UI, no watermarks, no logos. No anime, no illustration, no cartoon, no floating island, no generic neon gradients. No extra astronauts. Never obscure or crop the helmet. Actual hero photograph asset filling the entire image.

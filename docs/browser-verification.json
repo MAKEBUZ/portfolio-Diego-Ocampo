@@ -1,0 +1,74 @@
+{
+  "date": "2026-10-23",
+  "design": "Portafolio editorial con portada espacial y galería de intereses a color",
+  "browser": "Codex in-app browser",
+  "viewports": {
+    "desktop": "1280 × 720",
+    "responsive": [
+      "320 × 850",
+      "390 × 850",
+      "768 × 850"
+    ],
+    "method": "Comprobación visual de viewport real en iframe local temporal; fixture y excepción de encabezado retirados tras la revisión."
+  },
+  "passed": [
+    "Portada, proyectos, perfil, contacto y navegación entre secciones",
+    "Archivo de ocho proyectos, filtros, búsqueda sin resultados y restablecimiento",
+    "Fichas de WatSolution y RobotLang, retorno al archivo y cierre con Escape",
+    "Menú móvil, enlace a proyectos y enlace a Mi universo",
+    "Galería a color: Cine, Anime, Gaming y Música; imágenes y tonos por categoría",
+    "Lista completa de los 16 animes y favoritos musicales Ado, Avicii, openings y música japonesa",
+    "Composición visual en 320, 390, 768 y escritorio",
+    "Acceso local real al administrador, vista general y configuración",
+    "Cierre de sesión del administrador confirmado por respuesta DELETE 200"
+  ],
+  "fixesDuringReview": [
+    "Sustitución de una referencia residual al icono Clapperboard en el administrador",
+    "Separación de los textos del gráfico de WatSolution en pantallas estrechas"
+  ],
+  "automated": {
+    "nodeTests": "5/5",
+    "typecheck": "passed",
+    "format": "passed",
+    "build": "passed",
+    "lint": "passed"
+  },
+  "adminBackend": "Autenticación, almacenamiento, CRUD, subidas y recuperación se conservan de la reconstrucción anterior; en esta revisión se verificaron nuevamente el acceso, las vistas y el cierre de sesión.",
+  "scope": "Verificación local. No se ha desplegado ni publicado en GitHub.",
+  "productionBrowser": "Página cargada tras next build y next start, sin errores ni advertencias de consola durante esa comprobación.",
+  "preview": "http://127.0.0.1:3140/#inicio",
+  "colorUpdate": {
+    "date": "2026-10-23",
+    "scope": "Portada, proyectos, diálogos y continuidad cromática con Otros universos",
+    "verified": [
+      "Portada violeta con acentos lavanda y coral",
+      "Proyectos menta, melocotón y lila sobre fondo marfil",
+      "LSTM con gráfico completo, resumen y ficha ampliada",
+      "Móvil 320/390 y tableta 768, sin desbordamiento horizontal",
+      "Cierre de ficha con Escape"
+    ],
+    "build": "passed",
+    "typecheck": "passed",
+    "format": "passed"
+  },
+  "adminStyleUpdate": {
+    "date": "2026-10-23",
+    "scope": "Estudio personal: acceso, dashboard, perfil, proyectos, gustos y configuración",
+    "verified": [
+      "Acceso con credencial existente y navegación entre secciones",
+      "Búsqueda de proyectos con resultados y estado vacío",
+      "Etiquetas de favoritos con Enter y deduplicación",
+      "Guardado real en servidor y confirmación visible",
+      "Subida de JPG mediante selector, conversión WebP y vista previa",
+      "Botón Guardar deshabilitado mientras se sube un archivo",
+      "Restauración de la imagen original y comparación completa del contenido con la semilla",
+      "Móvil 320/390 y tableta 768 sin desbordamiento horizontal"
+    ],
+    "nodeTests": "5/5",
+    "typecheck": "passed",
+    "lint": "passed",
+    "build": "passed",
+    "format": "passed",
+    "preview": "http://127.0.0.1:3140/admin"
+  }
+}

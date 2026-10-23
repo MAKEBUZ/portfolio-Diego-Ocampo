@@ -1,33 +1,41 @@
 {
-  "name": "portfolio",
-  "version": "0.1.0",
+  "name": "ocampo-worlds",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint src",
+    "typecheck": "tsc --noEmit",
+    "admin:setup": "node scripts/admin-setup.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "format": "prettier --write src scripts tests README.md *.json *.mjs *.ts",
+    "format:check": "prettier --check src scripts tests README.md *.json *.mjs *.ts"
   },
   "dependencies": {
-    "framer-motion": "^12.10.5",
-    "gsap": "^3.13.0",
     "lucide-react": "^0.509.0",
-    "next": "15.3.8",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-icons": "^5.5.0",
-    "three": "^0.176.0"
+    "next": "15.5.28",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "sharp": "^0.35.5"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
+    "@types/node": "^22",
     "@types/react": "^19.1.4",
     "@types/react-dom": "^19",
-    "@types/three": "^0.176.0",
-    "eslint": "^9",
-    "eslint-config-next": "15.2.2",
-    "tailwindcss": "^4",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "15.5.28",
+    "prettier": "^3.9.10",
     "typescript": "^5"
+  },
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "overrides": {
+    "postcss": "^8.5.31",
+    "nanoid": "^3.3.20",
+    "source-map-js": "^1.2.2"
   }
 }

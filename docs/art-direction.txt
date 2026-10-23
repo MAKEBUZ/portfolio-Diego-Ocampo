@@ -1,0 +1,30 @@
+Tool: built-in image_gen.imagegen (not CLI/API)
+Original generated asset: exec-f8b3cfa3-9169-4a57-a3aa-0ebd866afa2d.png
+Final web asset: public/images/cinema/hero.webp
+
+Use case: stylized-concept
+Asset type: panoramic editorial illustration for the hero of a personal portfolio titled Ocampo Cinema.
+Primary request: An original beautifully crafted cinematic landscape combining hand-painted Japanese animation background art and a small 1930s Art Deco neighborhood movie theater at night after rain.
+Scene/backdrop: An evocative, intimate quiet street. Midnight blue, almost black sky with a few tiny stars; a muted neighboring streetscape fading into shadow. The wet pavement reflects warm honey-colored lights.
+Subject: A small refined vintage neighborhood movie theater, positioned in the CENTER-RIGHT of the image, occupying most of the right 55 percent of the composition. Elegant Art Deco stepped facade, soft warm illuminated windows, luminous honey amber marquee, burgundy doors and subtle deep petrol green details. Small poster cases without letters. One discreet bicycle leaned near the entrance.
+Style/medium: Masterful hand-painted animation background, delicate gouache texture and confident clean architectural linework, atmospheric, highly detailed but calm, premium editorial artwork. Original architectural design, no franchise references.
+Composition/framing: Wide panoramic landscape 16:9, ideally 2048 by 1152 or larger. Human eye level, slight three-quarter exterior view, enough environment around the theater. The LEFT 40 percent must remain relatively dark, quiet and low-detail for HTML title typography. Give the theater a striking silhouette, avoid cropping its upper architecture. The ground has painterly reflected ribbons of warm light.
+Lighting/mood: Cozy warm cinema inviting the visitor on an adventure, cinematic night atmosphere, subtle mist, light drizzle, luminous contrast, tender nostalgia.
+Color palette: midnight navy and deep petrol shadows, warm honey amber lights, muted burgundy and warm cream facade.
+Text: Only the small word "CINEMA" may appear on the marquee. No other letters, no poster copy.
+Constraints: No user interface. No watermarks. No logos. No copyrighted characters. No people needed. No photorealism, no 3D render. Render the actual art asset as a full image, not a website or mockup.
+
+WORLD MAP
+Tool: built-in image_gen.imagegen (not CLI/API)
+Original generated asset: exec-0c6311af-5abf-4872-bae9-7d83b168f188.png
+Final web asset: public/images/cinema/world.webp
+
+Use case: stylized-concept
+Asset type: Original explorable anime fantasy game world background; panoramic aerial map for an interactive personal portfolio.
+Primary request: A wonderfully charming, richly detailed hand-painted anime adventure map showing an entire small floating island with a fantasy village, from a consistent three-quarter bird's-eye isometric perspective. The whole island must fit inside the frame with comfortable sky margins on all four sides. Wide 16:9 panorama, at least 1536 pixels wide, ideally 2048 by 1152.
+Scene/backdrop: Dusk becoming a starry night. Deep blue-green petrol twilight sky, lavender sunset glow, enormous soft clouds floating around the lower edges of the island. Island suspended high in the sky, a little exposed rocky underside.
+Composition and landmarks: Five VERY DISTINCT, beautifully legible landmark buildings linked by clear walkable pale stone paths. CENTER: a welcoming central town square with a small classic Art Deco movie theater, glowing honey amber lights, a clean blank marquee WITHOUT TEXT. LOWER LEFT: an inventor's workshop with obvious decorative brass gears and turquoise magical glow. UPPER LEFT: a cozy library beside a large blossoming pink sakura tree, books visible inside warm windows. UPPER RIGHT: a small observatory with a lavender blue dome and a visible telescope pointing toward the stars. LOWER RIGHT: an arcade cottage with playful pastel pennant bunting and glowing colorful windows, no words or signs. Keep enough visual separation that each landmark can host one interactive HTML hotspot. A clear network of paths connects all five landmarks and the central open plaza. The central plaza has ample clear ground for an avatar to move on.
+Landscape details: A small winding river, two modest stone footbridges, gentle stone staircases, flower beds, warm lanterns, varied little trees, soft lush mossy lawns. Decorative details support spatial clarity and never obscure paths.
+Style/medium: Premium original Japanese animation-inspired fantasy adventure background, delicate watercolor and gouache textures, refined inked architectural details, painterly lighting, charming and atmospheric but spatially legible. Isometric map rather than a landscape seen from the ground.
+Color palette: Midnight teal / petrol, warm honey gold, sakura pink, lavender accents, soft sage greenery.
+Constraints: NO characters. NO people. NO text or letters anywhere. NO UI, no overlays, no labels, no logos, no watermark. No franchise references. No photorealism, no 3D render. Five landmarks exactly, all comfortably inside frame, whole island visible.

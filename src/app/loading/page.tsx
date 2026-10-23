@@ -1,7 +1,4 @@
-'use client'
-
-import LoadingScreen from '../components/LoadingScreen'
-
+import { redirect } from 'next/navigation';
 export default function LoadingPage() {
-  return <LoadingScreen />
+  redirect('/');
 }
